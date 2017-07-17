@@ -256,7 +256,7 @@ namespace ServiceStack.Aws.DynamoDb
                 }
             }
 
-            var filter = StringBuilderCache.ReturnAndFree(sb);
+            var filter = StringBuilderCache.Retrieve(sb);
             if (filter.Length > 0)
             {
                 dynamoQ.AddFilter(filter, args);
@@ -300,7 +300,7 @@ namespace ServiceStack.Aws.DynamoDb
 
                 return string.Format(multiFmt, 
                     dynamoQ.GetFieldLabel(condition.Field.Name), 
-                    StringBuilderCache.ReturnAndFree(sbIn));
+                    StringBuilderCache.Retrieve(sbIn));
             }
         }
     }

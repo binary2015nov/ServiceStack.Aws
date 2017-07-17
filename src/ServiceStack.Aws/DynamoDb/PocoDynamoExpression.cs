@@ -316,7 +316,7 @@ namespace ServiceStack.Aws.DynamoDb
 
                     r.Append(e);
                 }
-                return StringBuilderCache.ReturnAndFree(r);
+                return StringBuilderCache.Retrieve(r);
             }
 
             return CachedExpressionCompiler.Evaluate(nex);
@@ -360,7 +360,7 @@ namespace ServiceStack.Aws.DynamoDb
             {
                 sb.Append(sb.Length > 0 ? "," + e : e);
             }
-            return StringBuilderCache.ReturnAndFree(sb);
+            return StringBuilderCache.Retrieve(sb);
         }
 
         protected virtual object VisitMemberInit(MemberInitExpression exp)

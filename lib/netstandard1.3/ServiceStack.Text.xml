@@ -1051,16 +1051,6 @@
             Allow Type to be deserialized into late-bould object Types using __type info
             </summary>
         </member>
-        <member name="T:ServiceStack.Text.StringBuilderCache">
-            <summary>
-            Reusable StringBuilder ThreadStatic Cache
-            </summary>
-        </member>
-        <member name="T:ServiceStack.Text.StringBuilderCacheAlt">
-            <summary>
-            Alternative Reusable StringBuilder ThreadStatic Cache
-            </summary>
-        </member>
         <member name="T:ServiceStack.Text.StringWriterCache">
             <summary>
             Reusable StringWriter ThreadStatic Cache
@@ -1192,6 +1182,33 @@
             <param name="recursionInfo">Tracks how deeply nested we are</param>
             <returns></returns>
         </member>
+        <member name="M:ServiceStack.HttpUtils.ReadToEnd(System.Net.WebResponse)">
+            <summary>
+            Reads all characters from the current position to the end of the data stream from the Internet response.
+            </summary>
+            <param name="response">The response from a Uniform Resource Identifier (URI).</param>
+            <returns>The rest of the data stream from the Internet response as a string, from the current position to the end. If
+            the current position is at the end of the stream, returns an empty string.</returns>
+        </member>
+        <member name="M:ServiceStack.HttpUtils.ReadToEnd(System.Net.WebResponse,System.Text.Encoding)">
+            <summary>
+            Reads all characters from the current position to the end of the data stream from the Internet response, with the specified character encoding.
+            </summary>
+            <param name="response">The response from a Uniform Resource Identifier (URI).</param>
+            <param name="encoding">The character encoding to use.</param>
+            <returns>The rest of the data stream from the Internet response as a string, from the current position to the end. If
+            the current position is at the end of the stream, returns an empty string.</returns>
+        </member>
+        <member name="M:ServiceStack.HttpUtils.GetWebResponse(System.String)">
+            <summary>
+            Gets an HTTP-specific response to an Internet request.
+            </summary>
+            <param name="urlString">The original Uniform Resource Identifier (URI) of the request.</param>
+            <returns>A System.Net.HttpWebResponse containing the response to the Internet request.</returns>
+            <exception cref="T:System.UriFormatException">The URI specified in requestUriString is not a valid URI.</exception>
+            <exception cref="T:System.Net.WebException">System.Net.HttpWebRequest.Abort was previously called.-or- An error occurred
+            while processing the request.</exception>
+        </member>
         <member name="T:ServiceStack.Licensing">
             <summary>
             Public Code API to register commercial license for ServiceStack.
@@ -1235,6 +1252,14 @@
             <param name="relativePath">the relative path</param>
             <returns>the absolute path</returns>
             <remarks>Assumes static content is in the parent folder of the /bin/ directory</remarks>
+        </member>
+        <member name="M:ServiceStack.PathUtils.CombineWith(System.String,System.String[])">
+            <summary>
+            Combines an array of strings into an url.
+            </summary>
+            <param name="baseUrl">The base url to combine.</param>
+            <param name="paths">An array of parts of the url.</param>
+            <returns>The combined urls.</returns>
         </member>
         <member name="M:ServiceStack.PlatformExtensions.AddAttributes(System.Reflection.PropertyInfo,System.Attribute[])">
             <summary>
@@ -1359,6 +1384,23 @@
             </summary>
             <param name="strVal"></param>
             <returns></returns>
+        </member>
+        <member name="M:ServiceStack.StringExtensions.Fmt(System.String,System.Object)">
+            <summary>
+            Replaces one or more format items in a specified string with the string representation of a specified object.
+            </summary>
+            <param name="format">A composite format string.</param>
+            <param name="arg0">The object to format.</param>
+            <returns>A copy of format in which any format items are replaced by the string representation of arg0.</returns>
+            <exception cref="T:System.ArgumentNullException">format is null.</exception>
+            <exception cref="T:System.FormatException">The format item in format is invalid.-or- The index of a format item is not zero.</exception>        
+        </member>
+        <member name="M:ServiceStack.StringExtensions.IsNullOrEmpty(System.String)">
+            <summary>
+            Indicates whether the specified string is null or an System.String.Empty string.
+            </summary>
+            <param name="value">The string to test.</param>
+            <returns>true if the value parameter is null or an empty string (""); otherwise, false.</returns>
         </member>
     </members>
 </doc>

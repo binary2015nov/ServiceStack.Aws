@@ -90,7 +90,7 @@ namespace ServiceStack.Aws.Sqs
                     sb.AppendLine("---------------\n");
                 }
 
-                return StringBuilderCache.ReturnAndFree(sb);
+                return StringBuilderCache.Retrieve(sb);
             }
         }
 

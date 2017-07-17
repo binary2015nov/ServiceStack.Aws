@@ -68,7 +68,7 @@ namespace ServiceStack.Aws.DynamoDb
                 "ResourceInUseException",
             };
 
-            JsConfig.InitStatics();
+            //JsConfig.InitStatics();
         }
 
         public void InitSchema()

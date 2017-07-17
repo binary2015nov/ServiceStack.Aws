@@ -4990,6 +4990,21 @@
             ASP.NET or HttpListener ServiceStack host
             </summary>
         </member>
+        <member name="P:ServiceStack.IAppHost.Config">
+            <summary>
+            The AppHost config
+            </summary>
+        </member>
+        <member name="P:ServiceStack.IAppHost.AppSettings">
+            <summary>
+            The AppHost AppSettings. Defaults to App or Web.config appSettings.
+            </summary>
+        </member>
+        <member name="P:ServiceStack.IAppHost.Plugins">
+            <summary>
+            List of pre-registered and user-defined plugins to be enabled in this AppHost
+            </summary>
+        </member>
         <member name="M:ServiceStack.IAppHost.Register``1(``0)">
             <summary>
             Register dependency in AppHost IOC on Startup
@@ -5170,16 +5185,6 @@
             Provide a custom model minder for a specific Request DTO
             </summary>
         </member>
-        <member name="P:ServiceStack.IAppHost.Config">
-            <summary>
-            The AppHost config
-            </summary>
-        </member>
-        <member name="P:ServiceStack.IAppHost.AppSettings">
-            <summary>
-            The AppHost AppSettings. Defaults to App or Web.config appSettings.
-            </summary>
-        </member>
         <member name="M:ServiceStack.IAppHost.RegisterService(System.Type,System.String[])">
             <summary>
             Register an Adhoc web service on Startup
@@ -5188,11 +5193,6 @@
         <member name="M:ServiceStack.IAppHost.RegisterServicesInAssembly(System.Reflection.Assembly)">
             <summary>
             Register all Services in Assembly
-            </summary>
-        </member>
-        <member name="P:ServiceStack.IAppHost.Plugins">
-            <summary>
-            List of pre-registered and user-defined plugins to be enabled in this AppHost
             </summary>
         </member>
         <member name="M:ServiceStack.IAppHost.LoadPlugin(ServiceStack.IPlugin[])">
@@ -7100,50 +7100,14 @@
              <returns>The same <see cref="T:ServiceStack.Web.IServiceRoutes"/> instance;
             		never <see langword="null"/>.</returns>
         </member>
-        <member name="P:ServiceStack.ServiceStackHost.StartedAt">
+        <member name="P:ServiceStack.ServiceStackHost.Plugins">
             <summary>
-            When the AppHost was instantiated.
+            Collection of added plugins.
             </summary>
         </member>
-        <member name="P:ServiceStack.ServiceStackHost.AfterInitAt">
+        <member name="P:ServiceStack.ServiceStackHost.Container">
             <summary>
-            When the Init function was done.
-            Called at begin of <see cref="M:ServiceStack.ServiceStackHost.OnAfterInit"/>
-            </summary>
-        </member>
-        <member name="P:ServiceStack.ServiceStackHost.ReadyAt">
-            <summary>
-            When all configuration was completed.
-            Called at the end of <see cref="M:ServiceStack.ServiceStackHost.OnAfterInit"/>
-            </summary>
-        </member>
-        <member name="P:ServiceStack.ServiceStackHost.TestMode">
-            <summary>
-            If app currently runs for unit tests.
-            Used for overwritting AuthSession.
-            </summary>
-        </member>
-        <member name="P:ServiceStack.ServiceStackHost.ServiceAssemblies">
-            <summary>
-            The assemblies reflected to find api services.
-            These can be provided in the constructor call.
-            </summary>
-        </member>
-        <member name="P:ServiceStack.ServiceStackHost.HasStarted">
-            <summary>
-            Wether AppHost configuration is done.
-            Note: It doesn't mean the start function was called.
-            </summary>
-        </member>
-        <member name="M:ServiceStack.ServiceStackHost.IsReady">
-            <summary>
-            Wether AppHost is ready configured and either ready to run or already running.
-            Equals <see cref="P:ServiceStack.ServiceStackHost.HasStarted"/>
-            </summary>
-        </member>
-        <member name="M:ServiceStack.ServiceStackHost.SetConfig(ServiceStack.HostConfig)">
-            <summary>
-            Set the host config of the AppHost.
+            The AppHost.Container. Note: it is not thread safe to register dependencies after AppStart.
             </summary>
         </member>
         <member name="M:ServiceStack.ServiceStackHost.Init">
@@ -7151,6 +7115,11 @@
             Initializes the AppHost.
             Calls the <see cref="M:ServiceStack.ServiceStackHost.Configure(Funq.Container)"/> method.
             Should be called before start.
+            </summary>
+        </member>
+        <member name="P:ServiceStack.ServiceStackHost.TestMode">
+            <summary>
+            If app currently runs for unit tests. Used for overwritting AuthSession.
             </summary>
         </member>
         <member name="M:ServiceStack.ServiceStackHost.GetWebRootPath">
@@ -7169,11 +7138,6 @@
             <summary>
             Retain the same behavior as ASP.NET and redirect requests to directores 
             without a trailing '/'
-            </summary>
-        </member>
-        <member name="P:ServiceStack.ServiceStackHost.Container">
-            <summary>
-            The AppHost.Container. Note: it is not thread safe to register dependencies after AppStart.
             </summary>
         </member>
         <member name="P:ServiceStack.ServiceStackHost.PreRequestFilters">
@@ -7206,11 +7170,6 @@
             <summary>
             Lists of view engines for this app.
             If view is needed list is looped until view is found.
-            </summary>
-        </member>
-        <member name="P:ServiceStack.ServiceStackHost.Plugins">
-            <summary>
-            Collection of added plugins.
             </summary>
         </member>
         <member name="M:ServiceStack.ServiceStackHost.OnPreExecuteServiceFilter(ServiceStack.IService,System.Object,ServiceStack.Web.IRequest,ServiceStack.Web.IResponse)">

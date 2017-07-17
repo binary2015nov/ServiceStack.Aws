@@ -38,7 +38,7 @@ namespace ServiceStack.Aws.Support
                     sb.Append(b.ToString("x2"));
                 }
             }
-            return StringBuilderCache.ReturnAndFree(sb);
+            return StringBuilderCache.Retrieve(sb);
         }
 
         public static byte[] ToSha256HashBytes(this byte[] bytes)

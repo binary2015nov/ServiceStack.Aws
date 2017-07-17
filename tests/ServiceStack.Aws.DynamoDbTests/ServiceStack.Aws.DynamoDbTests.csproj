@@ -67,12 +67,16 @@
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp1.1' ">
     <PackageReference Include="System.Data.Common" Version="4.*" />
-
-    <PackageReference Include="ServiceStack.Interfaces.Core" Version="1.0.*" />
+    <Reference Include="..\..\lib\netstandard1.1\ServiceStack.Interfaces.dll" />
+    <Reference Include="..\..\lib\netstandard1.3\ServiceStack.Text.dll" />
+    <Reference Include="..\..\lib\netstandard1.3\ServiceStack.Common.dll" />
+    <Reference Include="..\..\lib\netstandard1.6\ServiceStack.Client.dll" />
+    <Reference Include="..\..\lib\netstandard1.6\ServiceStack.dll" />
+    <!--<PackageReference Include="ServiceStack.Interfaces.Core" Version="1.0.*" />
     <PackageReference Include="ServiceStack.Text.Core" Version="1.0.*" />
     <PackageReference Include="ServiceStack.Common.Core" Version="1.0.*" />
     <PackageReference Include="ServiceStack.Client.Core" Version="1.0.*" />
-    <PackageReference Include="ServiceStack.Core" Version="1.0.*" />
+    <PackageReference Include="ServiceStack.Core" Version="1.0.*" />-->
   </ItemGroup>
 
 </Project>
