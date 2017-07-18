@@ -415,7 +415,7 @@
         </member>
         <member name="M:ServiceStack.Auth.RegisterService.Post(ServiceStack.Register)">
             <summary>
-                Create new Registration
+            Create new Registration
             </summary>
         </member>
         <member name="M:ServiceStack.Auth.RegisterService.UpdateUserAuth(ServiceStack.Register)">
@@ -4767,9 +4767,9 @@
             The AppHost AppSettings. Defaults to App or Web.config appSettings.
             </summary>
         </member>
-        <member name="P:ServiceStack.IAppHost.Plugins">
+        <member name="P:ServiceStack.IAppHost.ServiceController">
             <summary>
-            List of pre-registered and user-defined plugins to be enabled in this AppHost
+            Access Service Controller for ServiceStack
             </summary>
         </member>
         <member name="M:ServiceStack.IAppHost.Register``1(``0)">
@@ -4962,6 +4962,11 @@
             Register all Services in Assembly
             </summary>
         </member>
+        <member name="P:ServiceStack.IAppHost.Plugins">
+            <summary>
+            List of pre-registered and user-defined plugins to be enabled in this AppHost
+            </summary>
+        </member>
         <member name="M:ServiceStack.IAppHost.LoadPlugin(ServiceStack.IPlugin[])">
             <summary>
             Apply plugins to this AppHost
@@ -5001,11 +5006,6 @@
         <member name="M:ServiceStack.IAppHost.ExecuteMessage(ServiceStack.Messaging.IMessage)">
             <summary>
             Execute MQ Message in ServiceStack
-            </summary>
-        </member>
-        <member name="P:ServiceStack.IAppHost.ServiceController">
-            <summary>
-            Access Service Controller for ServiceStack
             </summary>
         </member>
         <member name="T:ServiceStack.IRepository">
