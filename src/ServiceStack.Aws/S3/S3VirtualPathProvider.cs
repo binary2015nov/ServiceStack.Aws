@@ -13,11 +13,6 @@ using ServiceStack.VirtualPath;
 
 namespace ServiceStack.Aws.S3
 {
-    public class S3VirtualFiles : S3VirtualPathProvider
-    {
-        public S3VirtualFiles(IAmazonS3 client, string bucketName) : base(client, bucketName) {}
-    }
-
     [Obsolete("Renamed to S3VirtualFiles")]
     public partial class S3VirtualPathProvider : AbstractVirtualPathProviderBase, IVirtualFiles
     {
@@ -31,7 +26,7 @@ namespace ServiceStack.Aws.S3
         {
             this.AmazonS3 = client;
             this.BucketName = bucketName;
-            this.rootDirectory = new S3VirtualDirectory(this, null);
+            this.rootDirectory = new S3VirtualDirectory(this, null, null);
         }
 
         public const char DirSep = '/';
@@ -55,7 +50,8 @@ namespace ServiceStack.Aws.S3
                     BucketName = BucketName,
                 });
 
-                return new S3VirtualFile(this, GetDirectory(GetDirPath(filePath))).Init(response);
+                var dirPath = GetDirPath(filePath);
+                return new S3VirtualFile(this, new S3VirtualDirectory(this, dirPath, GetParentDirectory(dirPath))).Init(response);
             }
             catch (AmazonS3Exception ex)
             {
@@ -66,14 +62,44 @@ namespace ServiceStack.Aws.S3
             }
         }
 
+        private S3VirtualDirectory GetParentDirectory(string dirPath)
+        {
+            if (string.IsNullOrEmpty(dirPath))
+                return null;
+
+            var parentDir = GetDirPath(dirPath.TrimEnd(DirSep));
+            return parentDir != null
+                ? new S3VirtualDirectory(this, dirPath, GetParentDirectory(parentDir))
+                : (S3VirtualDirectory)RootDirectory;
+        }
+
         public IVirtualDirectory GetDirectory(string dirPath)
         {
-            return new S3VirtualDirectory(this, dirPath);
+            if (dirPath == null)
+                return null;
+            if (dirPath == "")
+                return RootDirectory;
+
+            var seekPath = dirPath[dirPath.Length - 1] != DirSep
+                ? dirPath + DirSep
+                : dirPath;
+
+            var response = AmazonS3.ListObjects(new ListObjectsRequest
+            {
+                BucketName = BucketName,
+                Prefix = seekPath,
+                MaxKeys = 1,
+            });
+
+            if (response.S3Objects.Count == 0)
+                return null;
+
+            return new S3VirtualDirectory(this, dirPath, GetParentDirectory(dirPath));
         }
 
         public override bool DirectoryExists(string virtualPath)
         {
-            return GetDirectory(virtualPath).Files.Any();
+            return GetDirectory(virtualPath) != null;
         }
 
         public void WriteFile(string filePath, string contents)
@@ -159,7 +185,8 @@ namespace ServiceStack.Aws.S3
             {
                 var filePath = SanitizePath(file.Key);
 
-                yield return new S3VirtualFile(this, GetDirectory(GetDirPath(filePath)))
+                var dirPath = GetDirPath(filePath);
+                yield return new S3VirtualFile(this, new S3VirtualDirectory(this, dirPath, GetParentDirectory(dirPath)))
                 {
                     FilePath = filePath,
                     ContentLength = file.Size,
@@ -183,7 +210,8 @@ namespace ServiceStack.Aws.S3
                 .Where(x => x != null)
                 .Distinct();
 
-            return dirPaths.Map(x => new S3VirtualDirectory(this, x));
+            var parentDir = GetParentDirectory(fromDirPath);
+            return dirPaths.Map(x => new S3VirtualDirectory(this, x, parentDir));
         }
 
         public IEnumerable<S3VirtualFile> GetImmediateFiles(string fromDirPath)
