@@ -57,7 +57,7 @@ namespace ServiceStack.Aws.Tests.S3
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            appHost = new BasicAppHost()
+            appHost = new MockAppHost()
                 .Init();
         }
 

@@ -799,38 +799,6 @@
             Gets the logger.
             </summary>
         </member>
-        <member name="T:ServiceStack.Logging.NullDebugLogger">
-            <summary>
-            Default logger is to System.Diagnostics.Debug.Print
-            
-            Made public so its testable
-            </summary>
-        </member>
-        <member name="M:ServiceStack.Logging.NullDebugLogger.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="!:DebugLogger"/> class.
-            </summary>
-        </member>
-        <member name="M:ServiceStack.Logging.NullDebugLogger.#ctor(System.Type)">
-            <summary>
-            Initializes a new instance of the <see cref="!:DebugLogger"/> class.
-            </summary>
-        </member>
-        <member name="M:ServiceStack.Logging.NullDebugLogger.Log(System.Object,System.Exception)">
-            <summary>
-            Logs the specified message.
-            </summary>
-        </member>
-        <member name="M:ServiceStack.Logging.NullDebugLogger.LogFormat(System.Object,System.Object[])">
-            <summary>
-            Logs the format.
-            </summary>
-        </member>
-        <member name="M:ServiceStack.Logging.NullDebugLogger.Log(System.Object)">
-            <summary>
-            Logs the specified message.
-            </summary>
-        </member>
         <member name="T:ServiceStack.Logging.NullLogFactory">
             <summary>
             Creates a Debug Logger, that logs all messages to: System.Diagnostics.Debug
@@ -838,27 +806,36 @@
             Made public so its testable
             </summary>
         </member>
-        <member name="T:ServiceStack.Logging.StringBuilderLogFactory">
+        <member name="T:ServiceStack.Logging.NullLogger">
             <summary>
-            StringBuilderLog writes to shared StringBuffer.
+            Default logger is to System.Diagnostics.Debug.Print
             Made public so its testable
             </summary>
         </member>
-        <member name="M:ServiceStack.Logging.StringBuilderLog.Log(System.Object,System.Exception)">
+        <member name="M:ServiceStack.Logging.NullLogger.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="!:DebugLogger"/> class.
+            </summary>
+        </member>
+        <member name="M:ServiceStack.Logging.NullLogger.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="!:DebugLogger"/> class.
+            </summary>
+        </member>
+        <member name="M:ServiceStack.Logging.NullLogger.Log(System.Object,System.Exception)">
             <summary>
             Logs the specified message.
             </summary>
         </member>
-        <member name="M:ServiceStack.Logging.StringBuilderLog.LogFormat(System.Object,System.Object[])">
+        <member name="M:ServiceStack.Logging.NullLogger.LogFormat(System.Object,System.Object[])">
             <summary>
             Logs the format.
             </summary>
         </member>
-        <member name="M:ServiceStack.Logging.StringBuilderLog.Log(System.Object)">
+        <member name="M:ServiceStack.Logging.NullLogger.Log(System.Object)">
             <summary>
             Logs the specified message.
             </summary>
-            <param name="message">The message.</param>
         </member>
         <member name="T:ServiceStack.Logging.TestLogFactory">
             <summary>
@@ -1823,6 +1800,11 @@
         <member name="P:ServiceStack.Web.IRequestLogger.EnableErrorTracking">
             <summary>
             Turn On/Off Tracking of Exceptions
+            </summary>
+        </member>
+        <member name="P:ServiceStack.Web.IRequestLogger.LimitToServiceRequests">
+            <summary>
+            Limit logging to only Service Requests
             </summary>
         </member>
         <member name="P:ServiceStack.Web.IRequestLogger.RequiredRoles">

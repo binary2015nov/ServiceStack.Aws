@@ -109,8 +109,10 @@
             <returns>Namespace of type</returns>
         </member>
         <member name="T:ServiceStack.ServiceClientBase">
-            Need to provide async request options
-            http://msdn.microsoft.com/en-us/library/86wf6409(VS.71).aspx
+            <summary>
+            Makes a client middleware to access remote web service. This is an abstract class.
+            Needs to provide async request options, http://msdn.microsoft.com/en-us/library/86wf6409(VS.71).aspx.
+            </summary>
         </member>
         <member name="P:ServiceStack.ServiceClientBase.GlobalRequestFilter">
             <summary>
@@ -129,6 +131,11 @@
         <member name="P:ServiceStack.ServiceClientBase.Headers">
             <summary>
             Gets the collection of headers to be added to outgoing requests.
+            </summary>
+        </member>
+        <member name="M:ServiceStack.ServiceClientBase.#ctor">
+            <summary>
+            Initializes a new instance of the ServiceStack.ServiceClientBase class.
             </summary>
         </member>
         <member name="M:ServiceStack.ServiceClientBase.SetBaseUri(System.String)">

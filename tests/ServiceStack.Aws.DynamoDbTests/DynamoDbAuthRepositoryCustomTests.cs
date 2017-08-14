@@ -29,7 +29,7 @@ namespace ServiceStack.Aws.DynamoDbTests
             var db = CreatePocoDynamo();
             db.DeleteAllTables(TimeSpan.FromMinutes(1));
 
-            appHost = new BasicAppHost()
+            appHost = new MockAppHost()
                 .Init();
         }
 
