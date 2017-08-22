@@ -1150,7 +1150,7 @@
             <param name="value">The value.</param>
             <returns></returns>
         </member>
-        <member name="M:ServiceStack.Text.TypeSerializer.ToStringDictionary``1(``0)">
+        <member name="M:ServiceStack.Text.TypeSerializer.ToStringDictionary(System.Object)">
             <summary>
             Useful extension method to get the Dictionary[string,string] representation of any POCO type.
             </summary>
@@ -1299,7 +1299,7 @@
             Provides methods for the HTTP-specific request to a Uniform Resource Identifier (URI).
             </summary>
         </member>
-        <member name="M:ServiceStack.HttpUtils.GetJsonFromUrl(System.String,System.String,System.String,System.String,System.Text.Encoding,System.Action{System.Net.HttpWebRequest},System.Action{System.Net.HttpWebResponse})">
+        <member name="M:ServiceStack.HttpUtils.GetJsonFromUrl(System.String,System.String,System.String,System.String,System.Action{System.Net.HttpWebRequest},System.Action{System.Net.HttpWebResponse})">
             <summary>
             Gets the string representation response from the Internet resource to an HTTP-specific request whose 
             Accept HTTP header is <see cref="F:ServiceStack.MimeTypes.Json"/>.
@@ -1308,8 +1308,6 @@
             <param name="method">The request method to use to contact the Internet resource. The default value is GET.</param>
             <param name="requestBody">The optional request body associated with the Http-specific request.</param>
             <param name="contentType">The value of the Content-type HTTP header. The default value is null.</param>
-            <param name="encoding">The character encoding to use for reading from the response to the HTTP-specific request,
-            if the value is null use <c>PclExport.Instance.GetUseEncoding(false)</c>.</param>
             <param name="requestFilter">The method to filter the HTTP-specific request.</param>
             <param name="responseFilter">The method to filter the response to the HTTP-specific request.</param>
             <returns>The string representation response to the HTTP-specific request.</returns>
@@ -1326,13 +1324,11 @@
             <param name="method">The request method to use to contact the Internet resource. The default value is GET.</param>
             <param name="requestBody">The optional request body associated with the Http-specific request.</param>
             <param name="contentType">The value of the Content-type HTTP header. The default value is null.</param>
-            <param name="encoding">The character encoding to use for reading from the response to the HTTP-specific request,
-            if the value is null use <c>PclExport.Instance.GetUseEncoding(false)</c>.</param>
             <param name="requestFilter">The method to filter the HTTP-specific request.</param>
             <param name="responseFilter">The method to filter the response to the HTTP-specific request.</param>
             <returns>Returns System.Threading.Tasks`1. The task object representing the asynchronous operation.</returns>
         </member>
-        <member name="M:ServiceStack.HttpUtils.GetXmlFromUrl(System.String,System.String,System.String,System.String,System.Text.Encoding,System.Action{System.Net.HttpWebRequest},System.Action{System.Net.HttpWebResponse})">
+        <member name="M:ServiceStack.HttpUtils.GetXmlFromUrl(System.String,System.String,System.String,System.String,System.Action{System.Net.HttpWebRequest},System.Action{System.Net.HttpWebResponse})">
             <summary>
             Gets the string representation response from the Internet resource to an HTTP-specific request whose 
             Accept HTTP header is <see cref="F:ServiceStack.MimeTypes.Xml"/>.
@@ -1341,8 +1337,6 @@
             <param name="method">The request method to use to contact the Internet resource. The default value is GET.</param>
             <param name="requestBody">The optional request body associated with the Http-specific request.</param>
             <param name="contentType">The value of the Content-type HTTP header. The default value is null.</param>
-            <param name="encoding">The character encoding to use for reading from the response to the HTTP-specific request,
-            if the value is null use <c>PclExport.Instance.GetUseEncoding(false)</c>.</param>
             <param name="requestFilter">The method to filter the HTTP-specific request.</param>
             <param name="responseFilter">The method to filter the response to the HTTP-specific request.</param>
             <returns>The string representation response to the HTTP-specific request.</returns>
@@ -1350,22 +1344,20 @@
             <exception cref="T:System.Net.WebException">System.Net.HttpWebRequest.Abort was previously called.-or- The time-out period
             for the request expired.-or- An error occurred while processing the request.</exception>
         </member>
-        <member name="M:ServiceStack.HttpUtils.GetXmlFromUrlAsync(System.String,System.String,System.String,System.String,System.Text.Encoding,System.Action{System.Net.HttpWebRequest},System.Action{System.Net.HttpWebResponse})">
+        <member name="M:ServiceStack.HttpUtils.GetXmlFromUrlAsync(System.String,System.String,System.String,System.String,System.Action{System.Net.HttpWebRequest},System.Action{System.Net.HttpWebResponse})">
             <summary>
             Gets the string representation response from the Internet resource to an HTTP-specific request as an asynchronous operation
-            whose Accept HTTP header is <see cref="F:ServiceStack.MimeTypes.Xml"/> with the optional request and response filter.
+            whose Accept HTTP header is <see cref="F:ServiceStack.MimeTypes.Xml"/>.
             </summary>
             <param name="urlString">A URI string that identifies the Internet resource.</param>
             <param name="method">The request method to use to contact the Internet resource. The default value is GET.</param>
             <param name="requestBody">The optional request body associated with the Http-specific request.</param>
             <param name="contentType">The value of the Content-type HTTP header. The default value is null.</param>
-            <param name="encoding">The character encoding to use for reading from the response to the HTTP-specific request,
-            if the value is null use <c>PclExport.Instance.GetUseEncoding(false)</c>.</param>
             <param name="requestFilter">The method to filter the HTTP-specific request.</param>
             <param name="responseFilter">The method to filter the response to the HTTP-specific request.</param>
             <returns>Returns System.Threading.Tasks`1. The task object representing the asynchronous operation.</returns>
         </member>
-        <member name="M:ServiceStack.HttpUtils.GetCsvFromUrl(System.String,System.String,System.String,System.String,System.Text.Encoding,System.Action{System.Net.HttpWebRequest},System.Action{System.Net.HttpWebResponse})">
+        <member name="M:ServiceStack.HttpUtils.GetCsvFromUrl(System.String,System.String,System.String,System.String,System.Action{System.Net.HttpWebRequest},System.Action{System.Net.HttpWebResponse})">
             <summary>
             Gets the string representation response from the Internet resource to an HTTP-specific request whose 
             Accept HTTP header is <see cref="F:ServiceStack.MimeTypes.Csv"/>.
@@ -1374,8 +1366,6 @@
             <param name="method">The request method to use to contact the Internet resource. The default value is GET.</param>
             <param name="requestBody">The optional request body associated with the Http-specific request.</param>
             <param name="contentType">The value of the Content-type HTTP header. The default value is null.</param>    
-            <param name="encoding">The character encoding to use for reading from the response to the HTTP-specific request,
-            if the value is null use <c>PclExport.Instance.GetUseEncoding(false)</c>.</param>
             <param name="requestFilter">The method to filter the HTTP-specific request.</param>
             <param name="responseFilter">The method to filter the response to the HTTP-specific request.</param>
             <returns>The string representation response to the HTTP-specific request.</returns>
@@ -1383,7 +1373,7 @@
             <exception cref="T:System.Net.WebException">System.Net.HttpWebRequest.Abort was previously called.-or- The time-out period
             for the request expired.-or- An error occurred while processing the request.</exception>
         </member>
-        <member name="M:ServiceStack.HttpUtils.GetCsvFromUrlAsync(System.String,System.String,System.String,System.String,System.Text.Encoding,System.Action{System.Net.HttpWebRequest},System.Action{System.Net.HttpWebResponse})">
+        <member name="M:ServiceStack.HttpUtils.GetCsvFromUrlAsync(System.String,System.String,System.String,System.String,System.Action{System.Net.HttpWebRequest},System.Action{System.Net.HttpWebResponse})">
             <summary>
             Gets the string representation response from the Internet resource to an HTTP-specific request whose 
             Accept HTTP header is <see cref="F:ServiceStack.MimeTypes.Csv"/>.
@@ -1392,13 +1382,11 @@
             <param name="method">The request method to use to contact the Internet resource. The default value is GET.</param>
             <param name="requestBody">The optional request body associated with the Http-specific request.</param>
             <param name="contentType">The value of the Content-type HTTP header. The default value is null.</param>
-            <param name="encoding">The character encoding to use for reading from the response to the HTTP-specific request,
-            if the value is null use <c>PclExport.Instance.GetUseEncoding(false)</c>.</param>
             <param name="requestFilter">The method to filter the HTTP-specific request.</param>
             <param name="responseFilter">The method to filter the response to the HTTP-specific request.</param>
             <returns>Returns System.Threading.Tasks`1. The task object representing the asynchronous operation.</returns>
         </member>
-        <member name="M:ServiceStack.HttpUtils.GetHtmlFromUrl(System.String,System.String,System.String,System.String,System.Text.Encoding,System.Action{System.Net.HttpWebRequest},System.Action{System.Net.HttpWebResponse})">
+        <member name="M:ServiceStack.HttpUtils.GetHtmlFromUrl(System.String,System.String,System.String,System.String,System.Action{System.Net.HttpWebRequest},System.Action{System.Net.HttpWebResponse})">
             <summary>
             Gets the string representation response from the Internet resource to an HTTP-specific request whose 
             Accept HTTP header is <see cref="F:ServiceStack.MimeTypes.Html"/>.
@@ -1407,8 +1395,6 @@
             <param name="method">The request method to use to contact the Internet resource. The default value is GET.</param>
             <param name="requestBody">The optional request body associated with the Http-specific request.</param>
             <param name="contentType">The value of the Content-type HTTP header. The default value is null.</param>
-            <param name="encoding">The character encoding to use for reading from the response to the HTTP-specific request,
-            if the value is null use <c>PclExport.Instance.GetUseEncoding(false)</c>.</param>
             <param name="requestFilter">The method to filter the HTTP-specific request.</param>
             <param name="responseFilter">The method to filter the response to the HTTP-specific request.</param>
             <returns>The string representation response to the HTTP-specific request.</returns>
@@ -1416,7 +1402,7 @@
             <exception cref="T:System.Net.WebException">System.Net.HttpWebRequest.Abort was previously called.-or- The time-out period
             for the request expired.-or- An error occurred while processing the request.</exception>
         </member>
-        <member name="M:ServiceStack.HttpUtils.GetHtmlFromUrlAsync(System.String,System.String,System.String,System.String,System.Text.Encoding,System.Action{System.Net.HttpWebRequest},System.Action{System.Net.HttpWebResponse})">
+        <member name="M:ServiceStack.HttpUtils.GetHtmlFromUrlAsync(System.String,System.String,System.String,System.String,System.Action{System.Net.HttpWebRequest},System.Action{System.Net.HttpWebResponse})">
             <summary>
             Gets the string representation response from the Internet resource to an HTTP-specific request whose 
             Accept HTTP header is <see cref="F:ServiceStack.MimeTypes.Html"/>.
@@ -1425,13 +1411,11 @@
             <param name="method">The request method to use to contact the Internet resource. The default value is GET.</param>
             <param name="requestBody">The optional request body associated with the Http-specific request.</param>
             <param name="contentType">The value of the Content-type HTTP header. The default value is null.</param>
-            <param name="encoding">The character encoding to use for reading from the response to the HTTP-specific request,
-            if the value is null use <c>PclExport.Instance.GetUseEncoding(false)</c>.</param>
             <param name="requestFilter">The method to filter the HTTP-specific request.</param>
             <param name="responseFilter">The method to filter the response to the HTTP-specific request.</param>
             <returns>The string representation response to the HTTP-specific request.</returns>
         </member>
-        <member name="M:ServiceStack.HttpUtils.GetStringFromUrl(System.String,System.String,System.String,System.String,System.String,System.Text.Encoding,System.Action{System.Net.HttpWebRequest},System.Action{System.Net.HttpWebResponse})">
+        <member name="M:ServiceStack.HttpUtils.GetStringFromUrl(System.String,System.String,System.String,System.String,System.String,System.Action{System.Net.HttpWebRequest},System.Action{System.Net.HttpWebResponse})">
             <summary>
             Gets the string representation response from the Internet resource to an HTTP-specific request using the specified request options.
             </summary>
@@ -1440,8 +1424,6 @@
             <param name="requestBody">The optional request body associated with the Http-specific request.</param>
             <param name="contentType">The value of the Content-type HTTP header. The default value is null.</param>
             <param name="accept">The value of the Accept HTTP header. The default value is "*/*".</param>
-            <param name="encoding">The character encoding to use for reading from the response to the HTTP-specific request,
-            if the value is null use <c>PclExport.Instance.GetUseEncoding(false)</c>.</param>
             <param name="requestFilter">The method to filter the HTTP-specific request.</param>
             <param name="responseFilter">The method to filter the response to the HTTP-specific request.</param>
             <returns>The string representation response to the HTTP-specific request.</returns>
@@ -1449,7 +1431,7 @@
             <exception cref="T:System.Net.WebException">System.Net.HttpWebRequest.Abort was previously called.-or- The time-out period
             for the request expired.-or- An error occurred while processing the request.</exception>
         </member>
-        <member name="M:ServiceStack.HttpUtils.GetStringFromUrlAsync(System.String,System.String,System.String,System.String,System.String,System.Text.Encoding,System.Action{System.Net.HttpWebRequest},System.Action{System.Net.HttpWebResponse})">
+        <member name="M:ServiceStack.HttpUtils.GetStringFromUrlAsync(System.String,System.String,System.String,System.String,System.String,System.Action{System.Net.HttpWebRequest},System.Action{System.Net.HttpWebResponse})">
             <summary>
             Gets the string representation response from the Internet resource to an HTTP-specific request as an asynchronous operation using the specified request options. 
             </summary>
@@ -1458,28 +1440,23 @@
             <param name="requestBody">The optional request body associated with the Http-specific request.</param>
             <param name="contentType">The value of the Content-type HTTP header. The default value is null.</param>
             <param name="accept">The value of the Accept HTTP header. The default value is "*/*".</param>
-            <param name="encoding">The character encoding to use for reading from the response to the HTTP-specific request, 
-            if the value is null use <c>PclExport.Instance.GetUseEncoding(false)</c>.</param>
             <param name="requestFilter">The method to filter the HTTP-specific request.</param>
             <param name="responseFilter">The method to filter the response to the HTTP-specific request.</param>
             <returns>Returns System.Threading.Tasks`1. The task object representing the asynchronous operation.</returns>
         </member>
-        <member name="M:ServiceStack.HttpUtils.ReadToEnd(System.Net.WebResponse,System.Text.Encoding)">
+        <member name="M:ServiceStack.HttpUtils.ReadToEnd(System.Net.WebResponse)">
             <summary>
-            Reads all characters from the current position to the end of the data stream from the Internet response, with the specified character encoding.
+            Reads all characters from the current position to the end of the data stream from the Internet response.
             </summary>
             <param name="response">The response from an Uniform Resource Identifier (URI).</param>
-            <param name="encoding">The character encoding to use, if the value is null use <c>PclExport.Instance.GetUseEncoding(false)</c>.</param>
             <returns>The rest of the data stream from the Internet response as a string, from the current position to the end. If
             the current position is at the end of the stream, returns an empty string.</returns>
         </member>
-        <member name="M:ServiceStack.HttpUtils.ReadLines(System.Net.WebResponse,System.Text.Encoding)">
+        <member name="M:ServiceStack.HttpUtils.ReadLines(System.Net.WebResponse)">
             <summary>
-            Reads all lines of characters from the current position to the end of the data stream from the Internet response, 
-            with the specified character encoding.
+            Reads all lines of characters from the current position to the end of the data stream from the Internet response.
             </summary>
             <param name="response">The response from an Uniform Resource Identifier (URI).</param>
-            <param name="encoding">The character encoding to use, if the value is null use <c>PclExport.Instance.GetUseEncoding(false)</c>.</param>
             <returns>An System.Collections.Generic.IEnumerable`1 that contains System.String elements from the Internet response.</returns>
         </member>
         <member name="M:ServiceStack.HttpUtils.GetWebResponse(System.String)">
@@ -1554,14 +1531,14 @@
             </summary>
             <param name="basePath">The base path to combine.</param>
             <param name="paths">An string array that contains the path elements to combine.</param>
-            <returns>The combined path string.</returns>
+            <returns>The combined paths string.</returns>
         </member>
         <member name="M:ServiceStack.PathUtils.CombinePaths(System.String[])">
             <summary>
             Combines the path elements in a specified System.String array.
             </summary>
             <param name="paths">An string array that contains the path elements to combine.</param>
-            <returns>The combined path string.</returns>
+            <returns>The combined paths string.</returns>
         </member>
         <member name="M:ServiceStack.PclExport.WriteLine(System.String)">
             <summary>
@@ -1592,12 +1569,13 @@
             <summary>
             When overridden in a descendant class, Initializes a new System.Net.HttpWebRequest instance for the specified URI scheme.
             </summary>
-            <param name="urlString">A URI string that identifies the Internet resource.</param>
+            <param name="uriString">A URI string that identifies the Internet resource.</param>
             <returns>A System.Net.HttpWebRequest instance for the specific URI scheme.</returns>
-            <exception cref="T:System.ArgumentNullException">The urlString is null.</exception>
-            <exception cref="T:System.NotSupportedException">The request scheme specified in urlString has not been registered.</exception>
+            <exception cref="T:System.ArgumentNullException">The uriString is null.</exception>
+            <exception cref="T:System.NotSupportedException">The request scheme specified in uriString has not been registered.</exception>
             <exception cref="T:System.Security.SecurityException">The caller does not have permission to connect to the requested URI or a URI
             that the request is redirected to.</exception>
+            <exception cref="T:System.NotSupportedException">The request scheme specified in uriString is the http or https scheme.</exception>
             <exception cref="T:System.FormatException">The URI specified in uriString is not a valid URI.</exception>
         </member>
         <member name="M:ServiceStack.PlatformExtensions.AddAttributes(System.Reflection.PropertyInfo,System.Attribute[])">
@@ -1739,7 +1717,7 @@
         </member>
         <member name="M:ServiceStack.StringExtensions.AppendPath(System.String,System.String)">
             <summary>
-             Appends a copy of the specified uriComponent with character escaping to the base URI.
+             Appends a copy of the specified uriComponent without character escaping to the base URI.
             </summary>
             <param name="baseUriString">The base System.Uri, represented as a System.String.</param>
             <param name="uriComponent">The uri component to add to the base System.Uri.</param>
@@ -1747,7 +1725,7 @@
         </member>
         <member name="M:ServiceStack.StringExtensions.AppendPaths(System.String,System.String[])">
             <summary>
-             Appends the uri component elements with character escaping in a specified System.String array to the base URI.
+             Appends the uri component elements without character escaping in a specified System.String array to the base URI.
             </summary>
             <param name="baseUriString">The base System.Uri, represented as a System.String.</param>
             <param name="uriComponents">An string array that contains the uri component elements.</param>
@@ -1777,7 +1755,6 @@
             <param name="args">An object array that contains zero or more objects to format.</param>
             <returns> A copy of format in which the format items have been replaced by the string representation 
             of the corresponding objects in args.</returns>
-            <exception cref="T:System.ArgumentNullException">format or args is null.</exception>
             <exception cref="T:System.FormatException">format is invalid.-or- The index of a format item is less than zero, or greater
             than or equal to the length of the args array.</exception>
         </member>
@@ -1796,6 +1773,14 @@
             <param name="trimChars">An array of Unicode characters to remove, or null.</param>
             <returns>The string that remains after all occurrences of characters in the trimChars parameter are removed from the start of the current string.
             If trimChars is null or an empty array, white-space characters are removed instead.</returns>
+        </member>
+        <member name="M:ServiceStack.StringExtensions.TrimPrefixes(System.String,System.String[])">
+            <summary>
+             Removes the leading occurrences of the first matched string specified in an array from the current System.String object.
+            </summary>
+            <param name="value">The string to be trimed.</param>
+            <param name="prefixes">An array of strings to match, or null.</param>
+            <returns>The string that remains after the first matched string is removed from the start of the current string.</returns>
         </member>
         <member name="M:ServiceStack.StringExtensions.Print(System.String,System.Object[])">
             <summary>

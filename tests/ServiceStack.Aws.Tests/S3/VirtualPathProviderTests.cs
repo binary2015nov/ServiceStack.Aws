@@ -5,6 +5,7 @@ using Amazon.S3;
 using NUnit.Framework;
 using ServiceStack.IO;
 using ServiceStack.Testing;
+using ServiceStack.VirtualPath;
 
 namespace ServiceStack.Aws.Tests.S3
 {
@@ -53,7 +54,7 @@ namespace ServiceStack.Aws.Tests.S3
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            appHost = new MockAppHost()
+            appHost = new BasicAppHost()
                 .Init();
         }
 

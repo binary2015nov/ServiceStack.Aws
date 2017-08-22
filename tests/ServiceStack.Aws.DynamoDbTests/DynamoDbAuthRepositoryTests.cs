@@ -19,7 +19,7 @@ namespace ServiceStack.Aws.DynamoDbTests
         {
             CleanUp();
 
-            appHost = new MockAppHost()
+            appHost = new BasicAppHost()
                 .Init();
         }
 
