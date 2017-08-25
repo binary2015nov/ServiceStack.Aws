@@ -76,11 +76,6 @@
             Enable the authentication feature and configure the AuthService.
             </summary>
         </member>
-        <member name="P:ServiceStack.AuthFeature.SaveUserNamesInLowerCase">
-            <summary>
-            Should UserName or Emails be saved in AuthRepository in LowerCase
-            </summary>
-        </member>
         <member name="T:ServiceStack.Auth.IManageApiKeys">
             <summary>
             The Interface Auth Repositories need to implement to support API Keys
@@ -4594,7 +4589,7 @@
             <param name="additionalData">Supplemental data that was embedded within the token.</param>
             <returns>True if the data is valid; false if the data is invalid.</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:ServiceStack.Html.HtmlCompressor" -->
+        <!-- 对于成员“T:ServiceStack.Html.HtmlCompressor”忽略有格式错误的 XML 注释 -->
         <member name="F:ServiceStack.Html.HtmlCompressor.PHP_TAG_PATTERN">
             Predefined pattern that matches <code>&lt;?php ... ?></code> tags. 
             Could be passed inside a list to {@link #setPreservePatterns(List) setPreservePatterns} method.
@@ -4647,8 +4642,8 @@
             @param removeMultiSpaces set <code>true</code> to replace all multiple whitespace characters 
             will single spaces.
         </member>
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.RemoveIntertagSpaces" -->
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.RemoveQuotes" -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.RemoveIntertagSpaces”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.RemoveQuotes”忽略有格式错误的 XML 注释 -->
         <member name="F:ServiceStack.Html.HtmlCompressor.CompressJavaScript">
             Enables JavaScript compression within &lt;script> tags 
             if set to <code>true</code>. Default is <code>false</code> for performance reasons.
@@ -4680,13 +4675,13 @@
             
             @param simpleDoctype set <code>true</code> to replace existing DOCTYPE declaration with <code>&lt;!DOCTYPE html></code>
         </member>
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.RemoveScriptAttributes" -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.RemoveScriptAttributes”忽略有格式错误的 XML 注释 -->
         <member name="F:ServiceStack.Html.HtmlCompressor.RemoveStyleAttributes">
             If set to <code>true</code>, <code>type="text/style"</code> attributes will be removed from <code>&lt;style></code> tags. Default is <code>false</code>.
             
             @param removeStyleAttributes set <code>true</code> to remove <code>type="text/style"</code> attributes from <code>&lt;style></code> tags
         </member>
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.RemoveLinkAttributes" -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.RemoveLinkAttributes”忽略有格式错误的 XML 注释 -->
         <member name="F:ServiceStack.Html.HtmlCompressor.RemoveFormAttributes">
             If set to <code>true</code>, <code>method="get"</code> attributes will be removed from <code>&lt;form></code> tags. Default is <code>false</code>.
             
@@ -4697,13 +4692,13 @@
             
             @param removeInputAttributes set <code>true</code> to remove <code>type="text"</code> attributes from <code>&lt;input></code> tags
         </member>
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.SimpleBooleanAttributes" -->
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.RemoveJavaScriptProtocol" -->
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.RemoveHttpProtocol" -->
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.RemoveHttpsProtocol" -->
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.RemoveSurroundingSpaces" -->
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.PreservePatterns" -->
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.GenerateStatistics" -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.SimpleBooleanAttributes”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.RemoveJavaScriptProtocol”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.RemoveHttpProtocol”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.RemoveHttpsProtocol”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.RemoveSurroundingSpaces”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.PreservePatterns”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.GenerateStatistics”忽略有格式错误的 XML 注释 -->
         <member name="F:ServiceStack.Html.HtmlCompressor.Statistics">
             Returns {@link HtmlCompressorStatistics} object containing statistics of the last HTML compression, if enabled. 
             Should be called after {@link #compress(string)}
@@ -4732,7 +4727,7 @@
             @return metrics of a compressed document
             @see HtmlMetrics
         </member>
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressorStatistics.Time" -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressorStatistics.Time”忽略有格式错误的 XML 注释 -->
         <member name="F:ServiceStack.Html.HtmlCompressorStatistics.PreservedSize">
             Returns total size of blocks that were skipped by the compressor 
             (for example content inside <code>&lt;pre></code> tags or inside   
@@ -7143,12 +7138,6 @@
             this methods needs to be overwritten in subclass to provider a listener to start handling requests.
             </summary>
             <param name="urlBase">Url to listen to</param>
-        </member>
-        <member name="M:ServiceStack.ServiceStackHost.RedirectDirectory(ServiceStack.Web.IHttpRequest)">
-            <summary>
-            Retain the same behavior as ASP.NET and redirect requests to directores 
-            without a trailing '/'
-            </summary>
         </member>
         <member name="P:ServiceStack.ServiceStackHost.PreRequestFilters">
             <summary>

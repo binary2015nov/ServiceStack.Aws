@@ -493,7 +493,7 @@
             Used to annotate an Entity with its DB schema
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:ServiceStack.DataAnnotations.SequenceAttribute" -->
+        <!-- 对于成员“T:ServiceStack.DataAnnotations.SequenceAttribute”忽略有格式错误的 XML 注释 -->
         <member name="T:ServiceStack.Data.IEntityStore`1">
             <summary>
             For providers that want a cleaner API with a little more perf

@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v1.1": {},
     ".NETStandard,Version=v1.1/": {
-      "ServiceStack.Text/4.5.9": {
+      "ServiceStack.Text/1.0.0": {
         "dependencies": {
           "Microsoft.CSharp": "4.3.0",
           "Microsoft.Extensions.Primitives": "1.1.1",
@@ -360,7 +360,7 @@
     }
   },
   "libraries": {
-    "ServiceStack.Text/4.5.9": {
+    "ServiceStack.Text/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
