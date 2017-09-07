@@ -4,7 +4,7 @@
         <name>ServiceStack.Common</name>
     </assembly>
     <members>
-        <!-- 对于成员“M:ServiceStack.AssertUtils.AreNotNull(System.Collections.Generic.IDictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:ServiceStack.AssertUtils.AreNotNull(System.Collections.Generic.IDictionary{System.String,System.Object})" -->
         <member name="M:ServiceStack.CommandsUtils.ExecuteAsyncCommandExec(System.Collections.Generic.IEnumerable{ServiceStack.Commands.ICommandExec})">
             <summary>
             Provide the an option for the callee to block until all commands are executed
