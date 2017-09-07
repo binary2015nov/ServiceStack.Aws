@@ -4,5 +4,5 @@ REM %MSBUILD% build-core.proj /target:TeamCityBuild;NuGetPack /property:Configur
 REM %MSBUILD% build.proj /target:TeamCityBuild;NuGetPack /property:Configuration=Release;PatchVersion=9
 REM %MSBUILD% build-sn.proj /target:NuGetPack /property:Configuration=Signed;PatchVersion=9
 
-msbuild /p:Configuration=Release ..\src\ServiceStack.Aws.sln
+%msbuild% /p:Configuration=Release ..\src\ServiceStack.Aws.sln
 
