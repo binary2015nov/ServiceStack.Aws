@@ -17,7 +17,7 @@ namespace ServiceStack.Aws.DynamoDb
 
     public class DynamoDbAppSettings : AppSettingsBase, IRequiresSchema, IClearable
     {
-        private DynamoDbSettings DbSettings => (DynamoDbSettings)base.settings;
+        private DynamoDbSettings DbSettings => (DynamoDbSettings)base.SettingsReader;
 
         public IPocoDynamo Db => DbSettings.Db;
 
@@ -78,11 +78,6 @@ namespace ServiceStack.Aws.DynamoDb
             }
 
             return base.Get(key, default(T));
-        }
-
-        public override string GetString(string name)
-        {
-            return base.GetNullableString(name);
         }
 
         public override void Set<T>(string key, T value)

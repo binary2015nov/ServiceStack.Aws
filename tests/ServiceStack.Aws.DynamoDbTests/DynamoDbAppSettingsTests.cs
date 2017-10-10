@@ -63,7 +63,7 @@ namespace ServiceStack.Aws.DynamoDbTests
         public void GetString_returns_null_On_Nonexistent_Key()
         {
             var appSettings = GetAppSettings();
-            var value = appSettings.GetString("GarbageKey");
+            var value = appSettings.Get("GarbageKey");
             Assert.IsNull(value);
         }
 

@@ -37,7 +37,7 @@ namespace ServiceStack.Aws.DynamoDbTests.Shared
         public void GetNullable_String_Returns_Null()
         {
             var appSettings = GetAppSettings();
-            var value = appSettings.GetNullableString("NullableKey");
+            var value = appSettings.Get("NullableKey");
 
             Assert.That(value, Is.Null);
         }
@@ -46,7 +46,7 @@ namespace ServiceStack.Aws.DynamoDbTests.Shared
         public void GetString_Returns_Value()
         {
             var appSettings = GetAppSettings();
-            var value = appSettings.GetString("RealKey");
+            var value = appSettings.Get("RealKey");
 
             Assert.That(value, Is.EqualTo("This is a real value"));
         }

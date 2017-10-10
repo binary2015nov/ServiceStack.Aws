@@ -60,7 +60,9 @@
         <member name="P:ServiceStack.AuthenticateAttribute.Provider">
             <summary>
             Restrict authentication to a specific <see cref="T:ServiceStack.Auth.IAuthProvider"/>.
-            For example, if this attribute should only permit access.
+            For example, if this attribute should only permit access
+            if the user is authenticated with <see cref="T:ServiceStack.Auth.BasicAuthProvider"/>,
+            you should set this property to <see cref="F:ServiceStack.Auth.BasicAuthProvider.Name"/>.
             </summary>
         </member>
         <member name="P:ServiceStack.AuthenticateAttribute.HtmlRedirect">
@@ -926,26 +928,38 @@
         </member>
         <member name="T:ServiceStack.Configuration.AppSettings">
             <summary>
-            More familiar name for the new crowd.
+            Provides access to the System.Configuration.AppSettingsSection data for the current application's default configuration.
             </summary>
         </member>
         <member name="M:ServiceStack.Configuration.AppSettings.#ctor(System.String)">
             <summary>
-            The tier lets you specify a retrieving a setting with the tier prefix first before falling back to the original key. 
+            Initializes a new instance of the ServiceStack.Configuration.AppSettings class.
+            </summary>
+            <param name="tier">The tier used to retrieve a setting. The default value is null.</param>
+        </member>
+        <member name="T:ServiceStack.Configuration.AppSettingsBase">
+            <summary>
+            Provides a collection of keys and values that contains application settings. This is an abstract class.
+            </summary>
+        </member>
+        <member name="P:ServiceStack.Configuration.AppSettingsBase.Tier">
+            <summary>
+            Gets or sets the prefix of key, which lets you retrieve a setting with the tier first before falling back to the original key. 
             E.g a tier of 'Live' looks for 'Live.{Key}' or if not found falls back to '{Key}'.
             </summary>
         </member>
-        <member name="M:ServiceStack.Configuration.AppSettings.GetString(System.String)">
+        <member name="M:ServiceStack.Configuration.AppSettingsBase.#ctor(ServiceStack.Configuration.ISettingsReader)">
             <summary>
-            Returns string if exists, otherwise null
+            Initializes a new instance of the ServiceStack.Configuration.AppSettingsBase class using the specified settings reader.
             </summary>
-            <param name="name"></param>
-            <returns></returns>
+            <param name="reader">The instance of class to read the settings.</param>
         </member>
-        <member name="F:ServiceStack.Configuration.Config.DefaultNamespace">
+        <member name="M:ServiceStack.Configuration.AppSettingsBase.Get(System.String)">
             <summary>
-            Would've preferred to use [assembly: ContractNamespace] attribute but it is not supported in Mono
+            Gets the string value associated with the specified key.
             </summary>
+            <param name="key">The specified key.</param>
+            <returns>The string value associated with the specified key. If the specified key is not found, return null.</returns>
         </member>
         <member name="M:ServiceStack.Configuration.ConfigUtils.GetNullableAppSetting(System.String)">
             <summary>
@@ -981,23 +995,6 @@
             <summary>
             Gets the dictionary from app setting.
             </summary>
-        </member>
-        <member name="M:ServiceStack.Configuration.ISettings.Get(System.String)">
-            <summary>
-            Provides a common interface for Settings providers such as
-            ConfigurationManager or Azure's RoleEnvironment. The only
-            requirement is that if the implementation cannot find the
-            specified key, the return value must be null
-            </summary>
-            <param name="key">The key for the setting</param>
-            <returns>The string value of the specified key, or null if the key
-            was invalid</returns>
-        </member>
-        <member name="M:ServiceStack.Configuration.ISettings.GetAllKeys">
-            <summary>
-            Return all keys in this configuration source.
-            </summary>
-            <returns></returns>
         </member>
         <member name="T:ServiceStack.Configuration.MultiAppSettingsBuilder">
             <summary>
@@ -4265,7 +4262,7 @@
              and precision of 2 and 5 respectively.
              </summary>
         </member>
-        <member name="M:ServiceStack.Formats.MarkdownFormat.SerializeToStream(ServiceStack.Web.IRequest,System.Object,System.IO.Stream)">
+        <member name="M:ServiceStack.Formats.MarkdownFormat.SerializeToStreamAsync(ServiceStack.Web.IRequest,System.Object,System.IO.Stream)">
             <summary>
             Render Markdown for text/markdown and text/plain ContentTypes
             </summary>
@@ -4354,7 +4351,7 @@
             <summary>
             Starts the Web Service
             </summary>
-            <param name="urlBase">
+            <param name="baseUrl">
             A Uri that acts as the base that the server is listening on.
             Format should be: http://127.0.0.1:8080/ or http://127.0.0.1:8080/somevirtual/
             Note: the trailing slash is required! For more info see the
@@ -4379,7 +4376,7 @@
             </summary>
             <returns>Reserved Url if the process completes successfully</returns>
         </member>
-        <member name="M:ServiceStack.Host.RestHandler.CreateRequest(ServiceStack.Web.IRequest,System.String)">
+        <member name="M:ServiceStack.Host.RestHandler.CreateRequestAsync(ServiceStack.Web.IRequest,System.String)">
             <summary>
             Used in Unit tests
             </summary>
@@ -4439,6 +4436,11 @@
         <member name="M:ServiceStack.Host.ServiceController.Execute(System.Object,ServiceStack.Web.IRequest)">
             <summary>
             External HTTP Request called from HTTP handlers
+            </summary>
+        </member>
+        <member name="M:ServiceStack.Host.ServiceController.ExecuteAsync(System.Object,ServiceStack.Web.IRequest)">
+            <summary>
+            Execute a Service with a Request DTO.
             </summary>
         </member>
         <member name="M:ServiceStack.Host.XsdMetadata.GetBaseTypeWithTheSameName(System.Type)">
@@ -4834,7 +4836,7 @@
             </summary>
             <returns>string value or null if it doesn't exist</returns>
         </member>
-        <member name="F:ServiceStack.HttpRequestExtensions.Log">
+        <member name="F:ServiceStack.HttpRequestExtensions.WebHostDirectoryName">
                      * 
                          Input: http://localhost:96/Cambia3/Temp/Test.aspx/path/info?q=item#fragment
             
@@ -4904,7 +4906,7 @@
             Deletes a specified cookie by setting its value to empty and expiration to -1 days
             </summary>
         </member>
-        <member name="M:ServiceStack.HttpResponseExtensionsInternal.WriteToResponse(ServiceStack.Web.IResponse,System.Object,ServiceStack.Web.ResponseSerializerDelegate,ServiceStack.Web.IRequest,System.Byte[],System.Byte[],System.Threading.CancellationToken)">
+        <member name="M:ServiceStack.HttpResponseExtensionsInternal.WriteToResponse(ServiceStack.Web.IResponse,System.Object,ServiceStack.Web.StreamSerializerDelegateAsync,ServiceStack.Web.IRequest,System.Byte[],System.Byte[],System.Threading.CancellationToken)">
             <summary>
             Writes to response.
             Response headers are customizable by implementing IHasOptions an returning Dictionary of Http headers.
@@ -5077,6 +5079,11 @@
         <member name="P:ServiceStack.IAppHost.GlobalResponseFilters">
             <summary>
             Add Response Filters for HTTP Responses
+            </summary>
+        </member>
+        <member name="P:ServiceStack.IAppHost.GlobalResponseFiltersAsync">
+            <summary>
+            Add Async Response Filters for HTTP Responses
             </summary>
         </member>
         <member name="P:ServiceStack.IAppHost.GlobalMessageRequestFilters">
@@ -6872,7 +6879,7 @@
             </summary>
             <returns>true if any dependencies were released</returns>
         </member>
-        <member name="M:ServiceStack.RequestExtensions.ToOptimizedResult``1(ServiceStack.Web.IRequest,``0)">
+        <member name="M:ServiceStack.RequestExtensions.ToOptimizedResult(ServiceStack.Web.IRequest,System.Object)">
             <summary>
             Returns the optimized result for the IRequestContext. 
             Does not use or store results in any cache.
@@ -6933,6 +6940,31 @@
             <param name="requestDto">The request DTO</param>
         </member>
         <member name="M:ServiceStack.RequestFilterAttribute.Copy">
+            <summary>
+            Create a ShallowCopy of this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ServiceStack.RequestFilterAsyncAttribute">
+            <summary>
+            Base class to create request filter attributes only for specific HTTP methods (GET, POST...)
+            </summary>
+        </member>
+        <member name="M:ServiceStack.RequestFilterAsyncAttribute.#ctor(ServiceStack.ApplyTo)">
+            <summary>
+            Creates a new <see cref="T:ServiceStack.RequestFilterAttribute"/>
+            </summary>
+            <param name="applyTo">Defines when the filter should be executed</param>
+        </member>
+        <member name="M:ServiceStack.RequestFilterAsyncAttribute.ExecuteAsync(ServiceStack.Web.IRequest,ServiceStack.Web.IResponse,System.Object)">
+            <summary>
+            This method is only executed if the HTTP method matches the <see cref="P:ServiceStack.RequestFilterAsyncAttribute.ApplyTo"/> property.
+            </summary>
+            <param name="req">The http request wrapper</param>
+            <param name="res">The http response wrapper</param>
+            <param name="requestDto">The request DTO</param>
+        </member>
+        <member name="M:ServiceStack.RequestFilterAsyncAttribute.Copy">
             <summary>
             Create a ShallowCopy of this instance.
             </summary>
@@ -7060,6 +7092,31 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:ServiceStack.ResponseFilterAsyncAttribute">
+            <summary>
+            Base class to create response filter attributes only for specific HTTP methods (GET, POST...)
+            </summary>
+        </member>
+        <member name="M:ServiceStack.ResponseFilterAsyncAttribute.#ctor(ServiceStack.ApplyTo)">
+            <summary>
+            Creates a new <see cref="T:ServiceStack.ResponseFilterAttribute"/>
+            </summary>
+            <param name="applyTo">Defines when the filter should be executed</param>
+        </member>
+        <member name="M:ServiceStack.ResponseFilterAsyncAttribute.ExecuteAsync(ServiceStack.Web.IRequest,ServiceStack.Web.IResponse,System.Object)">
+            <summary>
+            This method is only executed if the HTTP method matches the <see cref="P:ServiceStack.ResponseFilterAsyncAttribute.ApplyTo"/> property.
+            </summary>
+            <param name="req">The http request wrapper</param>
+            <param name="res">The http response wrapper</param>
+            <param name="requestDto">The response DTO</param>
+        </member>
+        <member name="M:ServiceStack.ResponseFilterAsyncAttribute.Copy">
+            <summary>
+            Create a ShallowCopy of this instance.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ServiceStack.Service">
             <summary>
             Generic + Useful IService base class
@@ -7180,7 +7237,7 @@
             Collection of ResponseConverters.
             Can be used to convert/change Output Dto
             
-            Called directly after response is handled, even before <see cref="M:ServiceStack.ServiceStackHost.ApplyResponseFilters(ServiceStack.Web.IRequest,ServiceStack.Web.IResponse,System.Object)"></see>!
+            Called directly after response is handled, even before <see cref="M:ServiceStack.ServiceStackHost.ApplyResponseFiltersAsync(ServiceStack.Web.IRequest,ServiceStack.Web.IResponse,System.Object)"></see>!
             </summary>
         </member>
         <member name="P:ServiceStack.ServiceStackHost.ViewEngines">
@@ -7251,14 +7308,14 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ServiceStack.ServiceStackHost.ApplyRequestFilters(ServiceStack.Web.IRequest,ServiceStack.Web.IResponse,System.Object)">
+        <member name="M:ServiceStack.ServiceStackHost.ApplyRequestFiltersAsync(ServiceStack.Web.IRequest,ServiceStack.Web.IResponse,System.Object)">
             <summary>
             Applies the request filters. Returns whether or not the request has been handled 
             and no more processing should be done.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ServiceStack.ServiceStackHost.ApplyResponseFilters(ServiceStack.Web.IRequest,ServiceStack.Web.IResponse,System.Object)">
+        <member name="M:ServiceStack.ServiceStackHost.ApplyResponseFiltersAsync(ServiceStack.Web.IRequest,ServiceStack.Web.IResponse,System.Object)">
             <summary>
             Applies the response filters. Returns whether or not the request has been handled 
             and no more processing should be done.
@@ -7512,15 +7569,15 @@
             Registers a service instance with the container. This instance will have <see cref="F:Funq.Owner.External"/> and 
             <see cref="F:Funq.ReuseScope.Hierarchy"/> behavior.
             </summary>
-            <param name = "instance"> Service instance to use.</param>
+            <param name="instance">Service instance to use.</param>
         </member>
         <member name="M:Funq.Container.Register``1(System.String,``0)">
             <summary>
             Registers a named service instance with the container. This instance
             will have <see cref="F:Funq.Owner.External"/> and <see cref="F:Funq.ReuseScope.Hierarchy"/> behavior.
             </summary >
-            <param name= "name"> Name of the service to register.</param>
-            <param name = "instance"> Service instance to use.</param>        
+            <param name="name">Name of the service to register.</param>
+            <param name="instance">Service instance to use.</param>        
         </member>
         <member name="M:Funq.Container.Dispose">
             <summary>
