@@ -4435,7 +4435,12 @@
         </member>
         <member name="M:ServiceStack.Host.ServiceController.Execute(System.Object,ServiceStack.Web.IRequest)">
             <summary>
-            External HTTP Request called from HTTP handlers
+            Execute a Service with a Request DTO. See ExecuteAsync for a non-blocking alternative.
+            </summary>
+        </member>
+        <member name="M:ServiceStack.Host.ServiceController.ExecuteAsync(System.Object,ServiceStack.Web.IRequest)">
+            <summary>
+            Execute a Service with a Request DTO.
             </summary>
         </member>
         <member name="M:ServiceStack.Host.ServiceController.ExecuteAsync(System.Object,ServiceStack.Web.IRequest)">
