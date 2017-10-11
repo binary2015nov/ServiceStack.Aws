@@ -32,7 +32,9 @@
         <member name="P:ServiceStack.AuthenticateAttribute.Provider">
             <summary>
             Restrict authentication to a specific <see cref="T:ServiceStack.Auth.IAuthProvider"/>.
-            For example, if this attribute should only permit access.
+            For example, if this attribute should only permit access
+            if the user is authenticated with <see cref="T:ServiceStack.Auth.BasicAuthProvider"/>,
+            you should set this property to <see cref="F:ServiceStack.Auth.BasicAuthProvider.Name"/>.
             </summary>
         </member>
         <member name="P:ServiceStack.AuthenticateAttribute.HtmlRedirect">
@@ -4290,7 +4292,7 @@
             </summary>
             <param name="defaultFilePath"></param>
         </member>
-        <member name="M:ServiceStack.Host.Handlers.RestHandler.CreateRequest(ServiceStack.Web.IRequest,System.String)">
+        <member name="M:ServiceStack.Host.RestHandler.CreateRequestAsync(ServiceStack.Web.IRequest,System.String)">
             <summary>
             Used in Unit tests
             </summary>
@@ -4350,6 +4352,11 @@
         <member name="M:ServiceStack.Host.ServiceController.Execute(System.Object,ServiceStack.Web.IRequest)">
             <summary>
             External HTTP Request called from HTTP handlers
+            </summary>
+        </member>
+        <member name="M:ServiceStack.Host.ServiceController.ExecuteAsync(System.Object,ServiceStack.Web.IRequest)">
+            <summary>
+            Execute a Service with a Request DTO.
             </summary>
         </member>
         <member name="M:ServiceStack.Host.XsdMetadata.GetBaseTypeWithTheSameName(System.Type)">
@@ -4832,6 +4839,11 @@
         <member name="P:ServiceStack.IAppHost.GlobalResponseFilters">
             <summary>
             Add Response Filters for HTTP Responses
+            </summary>
+        </member>
+        <member name="P:ServiceStack.IAppHost.GlobalResponseFiltersAsync">
+            <summary>
+            Add Async Response Filters for HTTP Responses
             </summary>
         </member>
         <member name="P:ServiceStack.IAppHost.GlobalMessageRequestFilters">
@@ -5501,6 +5513,31 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:ServiceStack.RequestFilterAsyncAttribute">
+            <summary>
+            Base class to create request filter attributes only for specific HTTP methods (GET, POST...)
+            </summary>
+        </member>
+        <member name="M:ServiceStack.RequestFilterAsyncAttribute.#ctor(ServiceStack.ApplyTo)">
+            <summary>
+            Creates a new <see cref="T:ServiceStack.RequestFilterAttribute"/>
+            </summary>
+            <param name="applyTo">Defines when the filter should be executed</param>
+        </member>
+        <member name="M:ServiceStack.RequestFilterAsyncAttribute.ExecuteAsync(ServiceStack.Web.IRequest,ServiceStack.Web.IResponse,System.Object)">
+            <summary>
+            This method is only executed if the HTTP method matches the <see cref="P:ServiceStack.RequestFilterAsyncAttribute.ApplyTo"/> property.
+            </summary>
+            <param name="req">The http request wrapper</param>
+            <param name="res">The http response wrapper</param>
+            <param name="requestDto">The request DTO</param>
+        </member>
+        <member name="M:ServiceStack.RequestFilterAsyncAttribute.Copy">
+            <summary>
+            Create a ShallowCopy of this instance.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="P:ServiceStack.RequestLogsFeature.AtRestPath">
             <summary>
             RequestLogs service Route, default is /requestlogs
@@ -5618,6 +5655,31 @@
             <param name="requestDto">The response DTO</param>
         </member>
         <member name="M:ServiceStack.ResponseFilterAttribute.Copy">
+            <summary>
+            Create a ShallowCopy of this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ServiceStack.ResponseFilterAsyncAttribute">
+            <summary>
+            Base class to create response filter attributes only for specific HTTP methods (GET, POST...)
+            </summary>
+        </member>
+        <member name="M:ServiceStack.ResponseFilterAsyncAttribute.#ctor(ServiceStack.ApplyTo)">
+            <summary>
+            Creates a new <see cref="T:ServiceStack.ResponseFilterAttribute"/>
+            </summary>
+            <param name="applyTo">Defines when the filter should be executed</param>
+        </member>
+        <member name="M:ServiceStack.ResponseFilterAsyncAttribute.ExecuteAsync(ServiceStack.Web.IRequest,ServiceStack.Web.IResponse,System.Object)">
+            <summary>
+            This method is only executed if the HTTP method matches the <see cref="P:ServiceStack.ResponseFilterAsyncAttribute.ApplyTo"/> property.
+            </summary>
+            <param name="req">The http request wrapper</param>
+            <param name="res">The http response wrapper</param>
+            <param name="requestDto">The response DTO</param>
+        </member>
+        <member name="M:ServiceStack.ResponseFilterAsyncAttribute.Copy">
             <summary>
             Create a ShallowCopy of this instance.
             </summary>
@@ -5743,7 +5805,7 @@
             Collection of ResponseConverters.
             Can be used to convert/change Output Dto
             
-            Called directly after response is handled, even before <see cref="M:ServiceStack.ServiceStackHost.ApplyResponseFilters(ServiceStack.Web.IRequest,ServiceStack.Web.IResponse,System.Object)"></see>!
+            Called directly after response is handled, even before <see cref="M:ServiceStack.ServiceStackHost.ApplyResponseFiltersAsync(ServiceStack.Web.IRequest,ServiceStack.Web.IResponse,System.Object)"></see>!
             </summary>
         </member>
         <member name="P:ServiceStack.ServiceStackHost.ViewEngines">
@@ -5814,14 +5876,14 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ServiceStack.ServiceStackHost.ApplyRequestFilters(ServiceStack.Web.IRequest,ServiceStack.Web.IResponse,System.Object)">
+        <member name="M:ServiceStack.ServiceStackHost.ApplyRequestFiltersAsync(ServiceStack.Web.IRequest,ServiceStack.Web.IResponse,System.Object)">
             <summary>
             Applies the request filters. Returns whether or not the request has been handled 
             and no more processing should be done.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ServiceStack.ServiceStackHost.ApplyResponseFilters(ServiceStack.Web.IRequest,ServiceStack.Web.IResponse,System.Object)">
+        <member name="M:ServiceStack.ServiceStackHost.ApplyResponseFiltersAsync(ServiceStack.Web.IRequest,ServiceStack.Web.IResponse,System.Object)">
             <summary>
             Applies the response filters. Returns whether or not the request has been handled 
             and no more processing should be done.

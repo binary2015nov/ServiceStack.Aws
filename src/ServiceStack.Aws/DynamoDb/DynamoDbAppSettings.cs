@@ -48,9 +48,9 @@ namespace ServiceStack.Aws.DynamoDb
                 return config?.Value;
             }
 
-            public List<string> GetAllKeys()
+            public IEnumerable<string> GetAllKeys()
             {
-                return Db.FromScan<ConfigSetting>().ExecColumn(x => x.Id).ToList();
+                return Db.FromScan<ConfigSetting>().ExecColumn(x => x.Id);
             }
 
             public void Set<T>(string key, T value)

@@ -13,7 +13,7 @@
           "ServiceStack": "1.0.0",
           "ServiceStack.Client": "1.0.0",
           "ServiceStack.Common": "1.0.0",
-          "ServiceStack.Interfaces": "4.0.0.0",
+          "ServiceStack.Interfaces": "1.0.0",
           "ServiceStack.OrmLite": "4.5.9.0",
           "ServiceStack.Redis": "4.5.9.0",
           "ServiceStack.Text": "4.5.9.0"
@@ -1341,6 +1341,7 @@
           "Microsoft.Extensions.Primitives": "2.0.0",
           "ServiceStack.Client": "1.0.0",
           "ServiceStack.Common": "1.0.0",
+          "ServiceStack.Interfaces": "1.0.0",
           "System.Linq.Queryable": "4.3.0",
           "System.Reflection.Emit": "4.3.0",
           "System.Threading.Thread": "4.3.0"
@@ -1352,9 +1353,9 @@
       "ServiceStack.Client/1.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "2.0.0",
+          "ServiceStack.Interfaces": "1.0.0",
           "System.Collections.Specialized": "4.3.0",
           "System.Net.Requests": "4.3.0",
-          "System.Runtime.Serialization.Xml": "4.3.0",
           "System.ServiceModel.Primitives": "4.3.0",
           "System.Xml.XmlSerializer": "4.3.0"
         },
@@ -1365,6 +1366,7 @@
       "ServiceStack.Common/1.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "2.0.0",
+          "ServiceStack.Interfaces": "1.0.0",
           "System.ComponentModel.Primitives": "4.3.0",
           "System.Data.Common": "4.3.0",
           "System.Dynamic.Runtime": "4.3.0",
@@ -1377,7 +1379,10 @@
           "ServiceStack.Common.dll": {}
         }
       },
-      "ServiceStack.Interfaces/4.0.0.0": {
+      "ServiceStack.Interfaces/1.0.0": {
+        "dependencies": {
+          "System.Runtime.Serialization.Primitives": "4.3.0"
+        },
         "runtime": {
           "ServiceStack.Interfaces.dll": {}
         }
@@ -2246,8 +2251,8 @@
       "serviceable": false,
       "sha512": ""
     },
-    "ServiceStack.Interfaces/4.0.0.0": {
-      "type": "reference",
+    "ServiceStack.Interfaces/1.0.0": {
+      "type": "project",
       "serviceable": false,
       "sha512": ""
     },

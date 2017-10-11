@@ -198,7 +198,6 @@ namespace ServiceStack.Aws.DynamoDbTests.Shared
         {
             var appSettings = GetAppSettings();
             var allKeys = appSettings.GetAllKeys();
-            allKeys.Remove("servicestack:license");
 
             Assert.That(allKeys, Is.EquivalentTo(GetConfigDictionary().Keys));
         }

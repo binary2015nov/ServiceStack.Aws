@@ -134,28 +134,6 @@
             Logs the specified message.
             </summary>
         </member>
-        <member name="M:ServiceStack.Logging.StringBuilderLog.Log(System.Object,System.Exception)">
-            <summary>
-            Logs the specified message.
-            </summary>
-        </member>
-        <member name="M:ServiceStack.Logging.StringBuilderLog.LogFormat(System.Object,System.Object[])">
-            <summary>
-            Logs the format.
-            </summary>
-        </member>
-        <member name="M:ServiceStack.Logging.StringBuilderLog.Log(System.Object)">
-            <summary>
-            Logs the specified message.
-            </summary>
-            <param name="message">The message.</param>
-        </member>
-        <member name="T:ServiceStack.Logging.StringBuilderLogFactory">
-            <summary>
-            StringBuilderLog writes to shared StringBuffer.
-            Made public so its testable
-            </summary>
-        </member>
         <member name="T:ServiceStack.MiniProfiler.Data.ExecuteType">
             <summary>
             Categories of sql statements.
