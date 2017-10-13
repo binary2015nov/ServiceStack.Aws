@@ -14,9 +14,9 @@
           "ServiceStack.Client": "1.0.0",
           "ServiceStack.Common": "1.0.0",
           "ServiceStack.Interfaces": "1.0.0",
-          "ServiceStack.OrmLite": "4.5.9.0",
-          "ServiceStack.Redis": "4.5.9.0",
-          "ServiceStack.Text": "4.5.9.0"
+          "ServiceStack.OrmLite": "5.0.0.0",
+          "ServiceStack.Redis": "5.0.0.0",
+          "ServiceStack.Text": "5.0.0.0"
         },
         "runtime": {
           "ServiceStack.Server.dll": {}
@@ -1387,17 +1387,17 @@
           "ServiceStack.Interfaces.dll": {}
         }
       },
-      "ServiceStack.OrmLite/4.5.9.0": {
+      "ServiceStack.OrmLite/5.0.0.0": {
         "runtime": {
           "ServiceStack.OrmLite.dll": {}
         }
       },
-      "ServiceStack.Redis/4.5.9.0": {
+      "ServiceStack.Redis/5.0.0.0": {
         "runtime": {
           "ServiceStack.Redis.dll": {}
         }
       },
-      "ServiceStack.Text/4.5.9.0": {
+      "ServiceStack.Text/5.0.0.0": {
         "runtime": {
           "ServiceStack.Text.dll": {}
         }
@@ -2256,17 +2256,17 @@
       "serviceable": false,
       "sha512": ""
     },
-    "ServiceStack.OrmLite/4.5.9.0": {
+    "ServiceStack.OrmLite/5.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "ServiceStack.Redis/4.5.9.0": {
+    "ServiceStack.Redis/5.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "ServiceStack.Text/4.5.9.0": {
+    "ServiceStack.Text/5.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

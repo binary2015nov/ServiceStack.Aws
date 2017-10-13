@@ -19,7 +19,7 @@
           "System.Net.Requests": "4.3.0",
           "System.Reflection.TypeExtensions": "4.3.0",
           "System.Runtime.Serialization.Primitives": "4.3.0",
-          "ServiceStack.Text": "4.5.9.0"
+          "ServiceStack.Text": "5.0.0.0"
         },
         "runtime": {
           "ServiceStack.Common.dll": {}
@@ -763,7 +763,7 @@
           "ServiceStack.Interfaces.dll": {}
         }
       },
-      "ServiceStack.Text/4.5.9.0": {
+      "ServiceStack.Text/5.0.0.0": {
         "runtime": {
           "ServiceStack.Text.dll": {}
         }
@@ -1313,7 +1313,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "ServiceStack.Text/4.5.9.0": {
+    "ServiceStack.Text/5.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

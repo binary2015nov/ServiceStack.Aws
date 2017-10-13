@@ -505,10 +505,5 @@
             
             </summary>
         </member>
-        <member name="T:ServiceStack.VirtualPath.InMemoryVirtualPathProvider">
-            <summary>
-            In Memory Virtual Path Provider.
-            </summary>
-        </member>
     </members>
 </doc>

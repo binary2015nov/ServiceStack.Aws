@@ -11,13 +11,13 @@ namespace Host.Console
 {
     public class AppHost : AppSelfHostBase
     {
-        public AppHost() 
-            : base("AWS Demo", typeof(MyServices).Assembly) {}
+        public AppHost() : base("AWS Demo", typeof(MyServices).Assembly)
+        {
+            Config.UseCamelCase = true;
+        }
 
         public override void Configure(Container container)
         {
-            JsConfig.EmitCamelCaseNames = true;
-
             var dynamoClient = new AmazonDynamoDBClient("keyId", "key", new AmazonDynamoDBConfig {
                 ServiceURL = "http://localhost:8000",
             });
@@ -31,9 +31,7 @@ namespace Host.Console
     }
 
     // Create your ServiceStack rest-ful web service implementation. 
-    public class MyServices : Service
-    {
-    }
+    public class MyServices : Service { }
 
     class Program
     {
