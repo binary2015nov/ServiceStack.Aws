@@ -77,7 +77,7 @@
             Class to hold  
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:ServiceStack.Text.Controller.PathInfo.Parse(System.String)" -->
+        <!-- 对于成员“M:ServiceStack.Text.Controller.PathInfo.Parse(System.String)”忽略有格式错误的 XML 注释 -->
         <member name="P:ServiceStack.Text.CsvSerializer.UseEncoding">
             <summary>
             Gets or sets the default character encoding using in A system.IO.Stream 
@@ -1331,9 +1331,9 @@
             http://www.yoda.arachsys.com/csharp/DoubleConverter.cs
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:ServiceStack.Text.Support.DoubleConverter.ToExactString(System.Double)" -->
-        <!-- Badly formed XML comment ignored for member "T:ServiceStack.Text.Support.DoubleConverter.ArbitraryDecimal" -->
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Text.Support.DoubleConverter.ArbitraryDecimal.digits" -->
+        <!-- 对于成员“M:ServiceStack.Text.Support.DoubleConverter.ToExactString(System.Double)”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“T:ServiceStack.Text.Support.DoubleConverter.ArbitraryDecimal”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ServiceStack.Text.Support.DoubleConverter.ArbitraryDecimal.digits”忽略有格式错误的 XML 注释 -->
         <member name="F:ServiceStack.Text.Support.DoubleConverter.ArbitraryDecimal.decimalPoint">
             <summary> 
             How many digits are *after* the decimal point
@@ -1826,7 +1826,7 @@
             <exception cref="T:System.NotSupportedException">The request scheme specified in uriString is the http or https scheme.</exception>
             <exception cref="T:System.FormatException">The URI specified in uriString is not a valid URI.</exception>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:ServiceStack.Net40PclExport.WriteLine(System.String)" -->
+        <!-- 对于成员“M:ServiceStack.Net40PclExport.WriteLine(System.String)”忽略有格式错误的 XML 注释 -->
         <member name="M:ServiceStack.Net40PclExport.WriteLine(System.String,System.Object[])">
             <summary>
             Writes a formatted message followed by a line terminator, to the Console output stream.    

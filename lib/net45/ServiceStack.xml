@@ -4577,13 +4577,11 @@
             Provide for quick lookups based on hashes that can be determined from a request url
             </summary>
         </member>
-        <member name="M:ServiceStack.Host.RestPath.IsMatch(System.String,System.String[])">
+        <member name="M:ServiceStack.Host.RestPath.IsMatch(ServiceStack.Web.IHttpRequest)">
             <summary>
             For performance withPathInfoParts should already be a lower case string
             to minimize redundant matching operations.
             </summary>
-            <param name="httpMethod"></param>
-            <param name="withPathInfoParts"></param>
             <returns></returns>
         </member>
         <member name="M:ServiceStack.Host.RestPath.IsMatch(System.String,System.String[],System.Int32@)">
@@ -4594,6 +4592,15 @@
             <param name="httpMethod"></param>
             <param name="withPathInfoParts"></param>
             <param name="wildcardMatchCount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ServiceStack.Host.ServiceController.GetRestPathForRequest(System.String,System.String,ServiceStack.Web.IHttpRequest)">
+            <summary>
+            Get Best Matching Route. 
+            </summary>
+            <param name="httpMethod"></param>
+            <param name="pathInfo"></param>
+            <param name="httpReq">If not null, ensures any Route matches any [Route(Matches)]</param>
             <returns></returns>
         </member>
         <member name="M:ServiceStack.Host.ServiceController.ExecuteMessage(ServiceStack.Messaging.IMessage)">
@@ -4631,7 +4638,7 @@
             <param name="type">The type.</param>
             <returns></returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:ServiceStack.Html.HtmlCompressor" -->
+        <!-- 对于成员“T:ServiceStack.Html.HtmlCompressor”忽略有格式错误的 XML 注释 -->
         <member name="F:ServiceStack.Html.HtmlCompressor.PHP_TAG_PATTERN">
             Predefined pattern that matches <code>&lt;?php ... ?></code> tags. 
             Could be passed inside a list to {@link #setPreservePatterns(List) setPreservePatterns} method.
@@ -4684,8 +4691,8 @@
             @param removeMultiSpaces set <code>true</code> to replace all multiple whitespace characters 
             will single spaces.
         </member>
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.RemoveIntertagSpaces" -->
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.RemoveQuotes" -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.RemoveIntertagSpaces”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.RemoveQuotes”忽略有格式错误的 XML 注释 -->
         <member name="F:ServiceStack.Html.HtmlCompressor.CompressJavaScript">
             Enables JavaScript compression within &lt;script> tags 
             if set to <code>true</code>. Default is <code>false</code> for performance reasons.
@@ -4717,13 +4724,13 @@
             
             @param simpleDoctype set <code>true</code> to replace existing DOCTYPE declaration with <code>&lt;!DOCTYPE html></code>
         </member>
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.RemoveScriptAttributes" -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.RemoveScriptAttributes”忽略有格式错误的 XML 注释 -->
         <member name="F:ServiceStack.Html.HtmlCompressor.RemoveStyleAttributes">
             If set to <code>true</code>, <code>type="text/style"</code> attributes will be removed from <code>&lt;style></code> tags. Default is <code>false</code>.
             
             @param removeStyleAttributes set <code>true</code> to remove <code>type="text/style"</code> attributes from <code>&lt;style></code> tags
         </member>
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.RemoveLinkAttributes" -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.RemoveLinkAttributes”忽略有格式错误的 XML 注释 -->
         <member name="F:ServiceStack.Html.HtmlCompressor.RemoveFormAttributes">
             If set to <code>true</code>, <code>method="get"</code> attributes will be removed from <code>&lt;form></code> tags. Default is <code>false</code>.
             
@@ -4734,13 +4741,13 @@
             
             @param removeInputAttributes set <code>true</code> to remove <code>type="text"</code> attributes from <code>&lt;input></code> tags
         </member>
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.SimpleBooleanAttributes" -->
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.RemoveJavaScriptProtocol" -->
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.RemoveHttpProtocol" -->
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.RemoveHttpsProtocol" -->
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.RemoveSurroundingSpaces" -->
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.PreservePatterns" -->
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressor.GenerateStatistics" -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.SimpleBooleanAttributes”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.RemoveJavaScriptProtocol”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.RemoveHttpProtocol”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.RemoveHttpsProtocol”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.RemoveSurroundingSpaces”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.PreservePatterns”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressor.GenerateStatistics”忽略有格式错误的 XML 注释 -->
         <member name="F:ServiceStack.Html.HtmlCompressor.Statistics">
             Returns {@link HtmlCompressorStatistics} object containing statistics of the last HTML compression, if enabled. 
             Should be called after {@link #compress(string)}
@@ -4769,7 +4776,7 @@
             @return metrics of a compressed document
             @see HtmlMetrics
         </member>
-        <!-- Badly formed XML comment ignored for member "F:ServiceStack.Html.HtmlCompressorStatistics.Time" -->
+        <!-- 对于成员“F:ServiceStack.Html.HtmlCompressorStatistics.Time”忽略有格式错误的 XML 注释 -->
         <member name="F:ServiceStack.Html.HtmlCompressorStatistics.PreservedSize">
             Returns total size of blocks that were skipped by the compressor 
             (for example content inside <code>&lt;pre></code> tags or inside   

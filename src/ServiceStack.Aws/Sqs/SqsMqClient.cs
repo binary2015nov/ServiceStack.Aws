@@ -9,8 +9,7 @@ namespace ServiceStack.Aws.Sqs
     public class SqsMqClient : SqsMqMessageProducer, IMessageQueueClient
     {
         public SqsMqClient(ISqsMqBufferFactory sqsMqBufferFactory, SqsQueueManager sqsQueueManager)
-            : base(sqsMqBufferFactory, sqsQueueManager)
-        { }
+            : base(sqsMqBufferFactory, sqsQueueManager) { }
 
         public void Notify(string queueName, IMessage message)
         {   // Just a publish
