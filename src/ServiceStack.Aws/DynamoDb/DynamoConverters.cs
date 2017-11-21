@@ -83,12 +83,10 @@ namespace ServiceStack.Aws.DynamoDb
             if (to != null)
                 return to;
 
-            var mapValue = value as Dictionary<string, AttributeValue>;
-            if (mapValue != null)
+            if (value is Dictionary<string, AttributeValue> mapValue)
                 return FromMapAttributeValue(mapValue, type);
 
-            var listValue = value as List<AttributeValue>;
-            if (listValue != null)
+            if (value is List<AttributeValue> listValue)
                 return FromListAttributeValue(listValue, type);
 
             return value.ConvertTo(type);
@@ -406,8 +404,7 @@ namespace ServiceStack.Aws.DynamoDb
 
             foreach (var field in metaType.Fields)
             {
-                AttributeValue attrValue;
-                if (!map.TryGetValue(field.Name, out attrValue))
+                if (!map.TryGetValue(field.Name, out AttributeValue attrValue))
                     continue;
 
                 from[field.Name] = FromAttributeValue(attrValue, field.Type);
@@ -486,10 +483,9 @@ namespace ServiceStack.Aws.DynamoDb
         {
             type = Nullable.GetUnderlyingType(type) ?? type;
 
-            IAttributeValueConverter valueConverter;
-            if (!ValueConverters.TryGetValue(type, out valueConverter))
+            if (!ValueConverters.TryGetValue(type, out IAttributeValueConverter valueConverter))
             {
-                if (type.IsEnum())
+                if (type.IsEnum)
                     return EnumConverter;
             }
             return valueConverter;
