@@ -9,7 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{91F39E88
 		..\build\build.bat = ..\build\build.bat
 		..\build\build.proj = ..\build\build.proj
 		..\lib\copy.bat = ..\lib\copy.bat
-		..\NuGet.Core\ServiceStack.Aws.Core\servicestack.aws.core.nuspec = ..\NuGet.Core\ServiceStack.Aws.Core\servicestack.aws.core.nuspec
 		..\NuGet\ServiceStack.Aws\servicestack.aws.nuspec = ..\NuGet\ServiceStack.Aws\servicestack.aws.nuspec
 		..\build\start-local-dynamodb.bat = ..\build\start-local-dynamodb.bat
 	EndProjectSection
@@ -57,10 +56,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{BDF3DBA4-29B9-47D9-B25C-DDC0077FC7CD} = {13DBB9CD-5C5B-43D1-B1E9-C51DAFD68A47}
-	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C05A7EE5-8A75-4B68-957C-23E4243332A8}
+		SolutionGuid = {BFC6E2EF-D5F3-4D43-A2DE-0BBAAC149BBA}
 	EndGlobalSection
 EndGlobal

@@ -23,9 +23,7 @@ namespace ServiceStack.Aws.Sqs.Fake
 
         private FakeSqsQueue GetQueue(string queueUrl)
         {
-            FakeSqsQueue q;
-
-            if (!queues.TryGetValue(queueUrl, out q))
+            if (!queues.TryGetValue(queueUrl, out var q))
             {
                 throw new QueueDoesNotExistException($"Queue does not exist for url [{queueUrl}]");
             }
@@ -392,9 +390,7 @@ namespace ServiceStack.Aws.Sqs.Fake
 
         public DeleteQueueResponse DeleteQueue(DeleteQueueRequest request)
         {
-            FakeSqsQueue q;
-
-            queues.TryRemove(request.QueueUrl, out q);
+            queues.TryRemove(request.QueueUrl, out _);
 
             return new DeleteQueueResponse();
         }
@@ -430,10 +426,8 @@ namespace ServiceStack.Aws.Sqs.Fake
                     { QueueAttributeName.ReceiveMessageWaitTimeSeconds, q.QueueDefinition.ReceiveWaitTime.ToString() },
                     { QueueAttributeName.CreatedTimestamp, q.QueueDefinition.CreatedTimestamp.ToString() },
                     { QueueAttributeName.ApproximateNumberOfMessages, q.Count.ToString() },
-                    { QueueAttributeName.QueueArn, q.QueueDefinition.QueueArn.ToString() },
-                    { QueueAttributeName.RedrivePolicy, q.QueueDefinition.RedrivePolicy == null
-                        ? null
-                        : q.QueueDefinition.RedrivePolicy.ToJson() }
+                    { QueueAttributeName.QueueArn, q.QueueDefinition.QueueArn },
+                    { QueueAttributeName.RedrivePolicy, q.QueueDefinition.RedrivePolicy?.ToJson() }
                 }
             };
         }
@@ -525,6 +519,16 @@ namespace ServiceStack.Aws.Sqs.Fake
         public Task<ListQueuesResponse> ListQueuesAsync(ListQueuesRequest request, CancellationToken token = default(CancellationToken))
         {
             return ListQueues(request).AsTaskResult();
+        }
+
+        public ListQueueTagsResponse ListQueueTags(ListQueueTagsRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ListQueueTagsResponse> ListQueueTagsAsync(ListQueueTagsRequest request, CancellationToken cancellationToken = new CancellationToken())
+        {
+            throw new NotImplementedException();
         }
 
         public PurgeQueueResponse PurgeQueue(string queueUrl)
@@ -777,6 +781,26 @@ namespace ServiceStack.Aws.Sqs.Fake
         public Task<SetQueueAttributesResponse> SetQueueAttributesAsync(SetQueueAttributesRequest request, CancellationToken token = default(CancellationToken))
         {
             return SetQueueAttributes(request).AsTaskResult();
+        }
+
+        public TagQueueResponse TagQueue(TagQueueRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<TagQueueResponse> TagQueueAsync(TagQueueRequest request, CancellationToken cancellationToken = new CancellationToken())
+        {
+            throw new NotImplementedException();
+        }
+
+        public UntagQueueResponse UntagQueue(UntagQueueRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<UntagQueueResponse> UntagQueueAsync(UntagQueueRequest request, CancellationToken cancellationToken = new CancellationToken())
+        {
+            throw new NotImplementedException();
         }
 
         public string AuthorizeS3ToSendMessage(string queueUrl, string bucket)

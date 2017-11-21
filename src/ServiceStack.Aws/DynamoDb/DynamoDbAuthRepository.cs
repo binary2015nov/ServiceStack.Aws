@@ -114,14 +114,9 @@ namespace ServiceStack.Aws.DynamoDb
 
             AssertNoExistingUser(newUser);
 
-            string salt, hash;
-            HostContext.Resolve<IHashProvider>().GetHashAndSaltString(password, out hash, out salt);
-
             Sanitize(newUser);
 
-            newUser.PasswordHash = hash;
-            newUser.Salt = salt;
-            newUser.DigestHa1Hash = new DigestAuthFunctions().CreateHa1(newUser.UserName, DigestAuthProvider.Realm, password);
+            newUser.PopulatePasswordHashes(password);
             newUser.CreatedDate = DateTime.UtcNow;
             newUser.ModifiedDate = newUser.CreatedDate;
 
@@ -326,15 +321,15 @@ namespace ServiceStack.Aws.DynamoDb
             return DeSanitize(Db.GetItem<TUserAuth>(userAuthId));
         }
 
-        public bool TryAuthenticate(string userName, string password, out IUserAuth userAuth)
+        public virtual bool TryAuthenticate(string userName, string password, out IUserAuth userAuth)
         {
             userAuth = GetUserAuthByUserName(userName);
             if (userAuth == null)
                 return false;
 
-            if (HostContext.Resolve<IHashProvider>().VerifyHashString(password, userAuth.PasswordHash, userAuth.Salt))
+            if (userAuth.VerifyPassword(password, out var needsRehash))
             {
-                this.RecordSuccessfulLogin(userAuth);
+                this.RecordSuccessfulLogin(userAuth, needsRehash, password);
                 return true;
             }
 
@@ -344,14 +339,13 @@ namespace ServiceStack.Aws.DynamoDb
             return false;
         }
 
-        public bool TryAuthenticate(Dictionary<string, string> digestHeaders, string privateKey, int nonceTimeOut, string sequence, out IUserAuth userAuth)
+        public virtual bool TryAuthenticate(Dictionary<string, string> digestHeaders, string privateKey, int nonceTimeOut, string sequence, out IUserAuth userAuth)
         {
             userAuth = GetUserAuthByUserName(digestHeaders["username"]);
             if (userAuth == null)
                 return false;
 
-            var digestHelper = new DigestAuthFunctions();
-            if (digestHelper.ValidateResponse(digestHeaders, privateKey, nonceTimeOut, userAuth.DigestHa1Hash, sequence))
+            if (userAuth.VerifyDigestAuth(digestHeaders, privateKey, nonceTimeOut, sequence))
             {
                 this.RecordSuccessfulLogin(userAuth);
                 return true;

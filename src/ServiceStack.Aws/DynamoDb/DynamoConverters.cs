@@ -299,19 +299,17 @@ namespace ServiceStack.Aws.DynamoDb
             {
                 case DynamoType.String:
                     var str = value as string 
-                        ?? (value is DateTimeOffset
-                            ? ((DateTimeOffset)value).ToString(CultureInfo.InvariantCulture)
-                            : value.ToString());
+                        ?? ((value as DateTimeOffset?)?.ToString(CultureInfo.InvariantCulture) ?? value.ToString());
                     return str == "" //DynamoDB throws on String.Empty
                         ? new AttributeValue { NULL = true } 
                         : new AttributeValue { S = str };
                 case DynamoType.Number:
-                    return new AttributeValue { N = value.ToString() };
+                    return new AttributeValue { N = DynamicNumber.GetNumber(value.GetType()).ToString(value) };
                 case DynamoType.Bool:
                     return new AttributeValue { BOOL = (bool)value };
                 case DynamoType.Binary:
-                    return value is MemoryStream
-                        ? new AttributeValue { B = (MemoryStream)value }
+                    return value is MemoryStream stream
+                        ? new AttributeValue { B = stream }
                         : value is Stream
                             ? new AttributeValue { B = new MemoryStream(((Stream)value).ReadFully()) }
                             : new AttributeValue { B = new MemoryStream((byte[])value) };
@@ -404,7 +402,7 @@ namespace ServiceStack.Aws.DynamoDb
 
             foreach (var field in metaType.Fields)
             {
-                if (!map.TryGetValue(field.Name, out AttributeValue attrValue))
+                if (!map.TryGetValue(field.Name, out var attrValue))
                     continue;
 
                 from[field.Name] = FromAttributeValue(attrValue, field.Type);
@@ -483,7 +481,7 @@ namespace ServiceStack.Aws.DynamoDb
         {
             type = Nullable.GetUnderlyingType(type) ?? type;
 
-            if (!ValueConverters.TryGetValue(type, out IAttributeValueConverter valueConverter))
+            if (!ValueConverters.TryGetValue(type, out var valueConverter))
             {
                 if (type.IsEnum)
                     return EnumConverter;
