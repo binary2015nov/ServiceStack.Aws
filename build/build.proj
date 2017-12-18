@@ -39,6 +39,7 @@
 
   <Target Name="BeforeBuildSolutions">
     <Message Text="*****Before building solution*****" Importance="high"/>
+    <CallTarget Targets="UpdateVersion" />
   </Target>
 
   <Target Name="BuildSolutions">
@@ -54,7 +55,7 @@
       </RegexTransform>
       <!--Update Min Dependency Version -->
       <RegexTransform Include="$(NuGetPackageDir)/**/*.nuspec">
-        <Find>version="5\.0[^"]*"</Find>
+        <Find>version="5\.[^"]*"</Find>
         <ReplaceWith>version="$(PackageVersion)"</ReplaceWith>
       </RegexTransform>
     </ItemGroup>
