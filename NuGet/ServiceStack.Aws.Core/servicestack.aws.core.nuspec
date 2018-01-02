@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
-    <id>ServiceStack.Aws</id> 
+    <id>ServiceStack.Aws.Core</id>
+    <title>ServiceStack.Aws.Core .NET Standard 2.0</title>
     <version>5.0.0</version>
     <authors>ServiceStack</authors> 
     <owners>ServiceStack</owners>
     <description>
-        ServiceStack integration for Amazon Web Services (AWS)
-    </description> 
+      .NET Standard 2.0 version of ServiceStack.Aws
+    </description>
     <projectUrl>https://github.com/ServiceStack/ServiceStack</projectUrl>
     <licenseUrl>https://servicestack.net/terms</licenseUrl>
     <iconUrl>https://servicestack.net/img/logo-32.png</iconUrl>
@@ -15,20 +16,13 @@
     <language>en-US</language> 
     <copyright>ServiceStack and contributors</copyright>
     <dependencies>
-      <group targetFramework="net45">
-        <dependency id="AWSSDK.Core" version="[3.3.21.6, )" />
-        <dependency id="AWSSDK.DynamoDBv2" version="[3.3.5, )" />
-        <dependency id="AWSSDK.S3" version="[3.3.16.2, )" />
-        <dependency id="AWSSDK.SQS" version="[3.3.3.2, )" />
-        <dependency id="ServiceStack" version="5.1.0" />
-      </group>
       <group targetFramework=".netstandard2.0">
         <dependency id="System.ServiceModel.Primitives" version="[4.4.0, )" />
         <dependency id="AWSSDK.Core" version="[3.3.21.6, )" />
         <dependency id="AWSSDK.DynamoDBv2" version="[3.3.5, )" />
         <dependency id="AWSSDK.S3" version="[3.3.16.2, )" />
         <dependency id="AWSSDK.SQS" version="[3.3.3.2, )" />
-        <dependency id="ServiceStack" version="5.1.0" />
+        <dependency id="ServiceStack.Core" version="5.0" />
       </group>
     </dependencies>
   </metadata>
