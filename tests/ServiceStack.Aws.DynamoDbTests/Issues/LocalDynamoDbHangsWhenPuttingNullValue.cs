@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace ServiceStack.Aws.DynamoDbTests.Issues
 {
-    [TestFixture,Explicit]
+    [TestFixture, Explicit]
     public class LocalDynamoDbHangsWhenPuttingNullValue
     {
         [Test]
