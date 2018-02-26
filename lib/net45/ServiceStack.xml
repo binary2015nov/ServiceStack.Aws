@@ -80,6 +80,12 @@
             Should UserName or Emails be saved in AuthRepository in LowerCase
             </summary>
         </member>
+        <member name="M:ServiceStack.AuthUserSession.Validate(ServiceStack.IServiceBase,ServiceStack.Auth.IAuthSession,ServiceStack.Auth.IAuthTokens,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Override with Custom Validation logic to Assert if User is allowed to Authenticate. 
+            Returning a non-null response invalidates Authentication with IHttpResult response returned to client.
+            </summary>
+        </member>
         <member name="T:ServiceStack.Auth.IManageApiKeys">
             <summary>
             The Interface Auth Repositories need to implement to support API Keys

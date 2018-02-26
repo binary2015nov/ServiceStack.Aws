@@ -131,7 +131,7 @@
             Sets which format to use when serializing TimeSpans
             </summary>
         </member>
-        <member name="P:ServiceStack.Text.JsConfig.EmitCamelCaseNames">
+        <member name="F:ServiceStack.Text.JsConfig.sEmitCamelCaseNames">
             <summary>
             <see langword="true"/> if the <see cref="T:ServiceStack.Text.Common.ITypeSerializer"/> is configured
             to take advantage of <see cref="T:System.CLSCompliantAttribute"/> specification,
