@@ -5695,6 +5695,11 @@
             <param name="requestDto"></param>
             <returns>Response DTO; non-null will short-circuit execution and return that response</returns>
         </member>
+        <member name="T:ServiceStack.Web.IServiceRoutes">
+            <summary>
+            Allow the registration of user-defined routes for services
+            </summary>
+        </member>
         <member name="T:ServiceStack.Messaging.IMessageHandlerFactory">
             <summary>
             Encapsulates creating a new message handler
